@@ -4,8 +4,8 @@ ext {
     bintrayName = 'benh5'
 
     publishedGroupId = 'org.benmobile.benh5.library'
-    libraryName = 'benh5-v2'
-    artifact = 'benh5-v2'
+    libraryName = 'benh5'
+    artifact = 'benh5'
 
     libraryDescription = 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）.'
 
@@ -41,6 +41,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
 dependencies {
@@ -50,8 +54,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:21.0.0'
     testCompile 'junit:junit:4.12'
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+
 
 }
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'

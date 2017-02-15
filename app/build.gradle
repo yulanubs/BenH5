@@ -17,7 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
+
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -28,6 +33,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
 //    compile 'org.benmobile.benh5.library:benh5-v2:0.0.5'
     compile 'com.inthecheesefactory.thecheeselibrary:benh5:0.0.1'
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+
 }
