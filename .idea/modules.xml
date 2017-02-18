@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BenH5.iml" filepath="$PROJECT_DIR$/BenH5.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/benh5/benh5.iml" filepath="$PROJECT_DIR$/benh5/benh5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/benh5-v2/benh5-v2.iml" filepath="$PROJECT_DIR$/benh5-v2/benh5-v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bentools/bentools.iml" filepath="$PROJECT_DIR$/bentools/bentools.iml" />
     </modules>
   </component>
 </project>
