@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "org.benmobile"
-        minSdkVersion 14
+        minSdkVersion 10
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -53,6 +53,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:21.0.0'
     testCompile 'junit:junit:4.12'
-//    compile 'org.benmobile.benh5.library:benh5:0.0.1'
+//    compile 'org.benmobile.benh5_v2.library:benh5-v2:0.0.1'
     compile 'org.benmobile.bentools.library:bentools:0.0.7'
 }

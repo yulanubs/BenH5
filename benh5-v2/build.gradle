@@ -12,7 +12,7 @@ ext {
     siteUrl = 'https://github.com/yulanubs/BenH5'
     gitUrl = 'https://github.com/yulanubs/BenH5.git'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.3'
 
     developerId = 'yulanubs'
     developerName = 'Jekshow'
@@ -27,7 +27,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 10
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -79,7 +79,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 
-    compile 'org.benmobile.bentools.library:bentools:0.0.7'
 }
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
