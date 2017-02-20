@@ -40,25 +40,19 @@ public class MBLogCrash extends  BaseDatabaseObj {
     public String network;
     @DatabaseKey(databaseKey = "NETWORK_DETAIL")
     public String networkDetail;
-    /**插件编号*/
     @DatabaseKey(databaseKey = "PLUGIN_ID")
     public String  pluginId;
-    /**异常类型*/
     @DatabaseKey(databaseKey = "EXCEPTION_TYPE")
     public String  exceptionType;
-    /**类名*/
     @DatabaseKey(databaseKey = "CLASS_NAME")
     public String className;
-    /**方法名*/
     @DatabaseKey(databaseKey = "METHOD_NAME")
     public String methodName;
-    /**行数*/
     @DatabaseKey(databaseKey = "LINE_NUMBER")
     public  String lineNumber;
     /***/
     @DatabaseKey(databaseKey = "CAUSE")
     public  String cause;
-    /**详细信息*/
     @DatabaseKey(databaseKey = "STACK_TRACE")
     public  String stackTrace;
 

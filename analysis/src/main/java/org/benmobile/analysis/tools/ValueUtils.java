@@ -5,11 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-/**
- * @author  tianshuguang@tomstaff.com
- * @date    2014-7-25
- * @version 1.0
- */
 public class ValueUtils {
 
 	/**
@@ -77,7 +72,7 @@ public class ValueUtils {
 	}
 	
 	/**
-	 * 	eg：20>20.00, 21.1111>21.11, 21.55555>21.56
+	 *
 	 */
 	public static String format2Percentile(String number) {
 		String strFormat = "%,.2f";
@@ -98,7 +93,7 @@ public class ValueUtils {
 	}
 	
 	/**
-	 * 	eg：20>20.00, 21.1111>21.11, 21.55555>21.56
+	 *
 	 */
 	public static String format2Percentile(double number) {
 		return format2Percentile(Double.toString(number));

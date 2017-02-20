@@ -12,7 +12,7 @@ ext {
     siteUrl = 'https://github.com/yulanubs/BenH5'
     gitUrl = 'https://github.com/yulanubs/BenH5.git'
 
-    libraryVersion = '0.0.3'
+    libraryVersion = '0.0.4'
 
     developerId = 'yulanubs'
     developerName = 'Jekshow'

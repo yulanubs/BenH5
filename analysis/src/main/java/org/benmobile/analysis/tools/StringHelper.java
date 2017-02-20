@@ -5,7 +5,7 @@ import java.net.URLEncoder;
 import java.text.DecimalFormat;
 public class StringHelper {
 
-	/** 零长度的字符串 */
+	/**  */
 	public static final String NULL_STRING = "";
 
 	private static char[] base64EncodeChars = new char[] { 'A', 'B', 'C', 'D',
@@ -125,7 +125,7 @@ public class StringHelper {
 	
 
 	/**
-	 * 二行制转字符串
+	 *
 	 */
 	public static String byte2hex(byte[] b) throws Exception {
 		String result = null;
@@ -143,10 +143,10 @@ public class StringHelper {
 	}
 	
     /**  
-     * 先进行Base64编码，再过滤掉回车换行，然后再进行URLEncode（UTF-8编码）
+     *
      *   
-     * @param src  md5后的内容
-     * @param enc  字符集编码
+     * @param src  md5
+     * @param enc
      * @return  
      * @throws Exception  
      */
@@ -164,11 +164,10 @@ public class StringHelper {
     	return result;
 	}
 	
-	/**  
-     * 对字符串进行URLEncode解码（UTF-8编码）
+	/**
      *   
-     * @param src  待编码的内容
-     * @param enc  字符集编码
+     * @param src
+     * @param enc
      * @return  
      * @throws Exception  
      */

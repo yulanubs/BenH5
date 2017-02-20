@@ -16,15 +16,13 @@ public class SignEnc {
 	public static final String VERIFY_ERROR = "verify error!";
 	public static final String SECRETTYPE = "0";
 	/**
-	 * 加密类型MD5 = "1";HMACSHA1 = "2";
 	 */
 	public static final String[]SIGN_TYPE = new String[]{"1","2" };
 	
 	
 	/**
-	 * 生成签名
-	 * @param params 传给服务器的参数
-	 * @param secret 分配给您的APP_SECRET
+	 * @param params
+	 * @param secret
 	 * @throws Exception 
 	 */
 	public static String sign(String params, String secret) throws SignEncException {
@@ -38,9 +36,9 @@ public class SignEnc {
 	
 
 	/**
-	 * hmac加密
-	 * @param params 传给服务器的参数
-	 * @param secret 分配给您的APP_SECRET
+	 * hmac
+	 * @param params
+	 * @param secret APP_SECRET
 	 */
 	public static String hmacSign(String params, String secret) throws SignEncException {
 		String result = null;
@@ -58,7 +56,7 @@ public class SignEnc {
 	}
 	
 	/**
-	 * HMAC加密算法  
+	 * HMAC
 	 * @param data
 	 * @param key
 	 * @param characterCodeType
@@ -69,7 +67,7 @@ public class SignEnc {
 		return b;
 	}
 	/**
-	 * 添加参数的封装方法
+	 *
 	 * @param params  
 	 * @param orgin
 	 * @return
@@ -107,9 +105,9 @@ public class SignEnc {
 	 */
 	public static void main(String[] args) {
 		try {
-			//需要加密的数据   
+
 			String data = "userID=663&orderId=100031634&payType=2&payPwd=123123";
-			//密钥   
+
 			String key = "bff6c876dbda4ea49ec9df557ac7a197";
 //			our(data, key);
 //			standard(data, key);
