@@ -12,6 +12,7 @@ android {
 
 
     }
+
         buildTypes {
             release {
                 minifyEnabled false
@@ -56,5 +57,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //    compile 'org.benmobile.benh5_v2.library:benh5-v2:0.0.1'
     compile 'org.benmobile.bentools.library:bentools:0.0.7'
-    compile files('libs/bugout_release.jar')
+    compile project(':core')
+    compile project(':protocol')
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }

@@ -70,6 +70,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
+
+
+
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

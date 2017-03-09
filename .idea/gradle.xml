@@ -11,6 +11,9 @@
             <option value="$PROJECT_DIR$/analysis" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/benh5-v2" />
+            <option value="$PROJECT_DIR$/bentools" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/protocol" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

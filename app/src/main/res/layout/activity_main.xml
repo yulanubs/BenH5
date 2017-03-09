@@ -44,6 +44,7 @@
         android:background="#fff">
 
         <RelativeLayout
+            android:id="@+id/rl_windows"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -74,6 +75,7 @@
 
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/rl_ui_wgt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -273,6 +275,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_appdemo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"

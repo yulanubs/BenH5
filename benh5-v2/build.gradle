@@ -41,6 +41,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+
     }
 
     packagingOptions {
@@ -67,9 +68,12 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+
     }
 }
+
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

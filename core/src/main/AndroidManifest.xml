@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.benmobile.core">
+
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:supportsRtl="true">
+
+        <service android:name="org.benmobile.core.natvie.update.service.UpdateService" />
+
+        <activity android:name="org.benmobile.core.natvie.core.activity.ActivityStub" />
+    </application>
+
+    <!--    插件框架所需权限-->
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIMAX_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+</manifest>

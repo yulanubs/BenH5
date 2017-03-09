@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="marketId">000</string>
+    <!-- push server -->
+    <string name="SERVER_BENH5_PUSH">http://59.46.81.105</string>
+    <!--BETA-->
+    <string name="SERVER_BETA_BENH5_VPS">http://59.46.81.105</string>
+    <string name="SERVER_BETA_BENH5_ALTERNATE_VPS">http://59.46.81.105</string>
+    <!-- PRD -->
+    <string name="SERVER_PRD_BENH5_VPS">http://59.46.81.105</string>
+    <string name="SERVER_PRD_BENH5_ALTERNATE_VPS">http://59.46.81.105</string>
+    <string name="UPDATE_KEY">benh5_android_update</string>
+</resources>

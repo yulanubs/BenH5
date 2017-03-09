@@ -6,6 +6,7 @@ public class BenH5_V2 {
     private static BenH5_V2 instance;
 
     /**
+     * 版本信息
      * @return  BenH5_V2 Instan
      */
     public static BenH5_V2 getInstance() {
