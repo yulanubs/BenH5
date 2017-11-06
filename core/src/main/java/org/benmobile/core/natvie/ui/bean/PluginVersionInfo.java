@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import android.util.Log;
-/**
+/*
  * 
 	 * @ClassName: VersionInfo<BR>
      * @Describe：App plug-in version information entity class<BR>

@@ -1,7 +1,12 @@
 package org.benmobile.analysis.secret;
 
 public class HMACSHA1 {
-	
+	/**
+	 *
+	 * @param data
+	 * @param key
+	 * @return
+	 */
 	public static byte[] getHmacSHA1(String data, String key) {
 		byte[] ipadArray = new byte[64];
 		byte[] opadArray = new byte[64];
@@ -37,6 +42,12 @@ public class HMACSHA1 {
 		return returnByte;
 	}
 
+	/**
+	 *
+	 * @param b1
+	 * @param b2
+	 * @return
+	 */
 	private static byte[] join(byte[] b1, byte[] b2) {
 		int length = b1.length + b2.length;
 		byte[] newer = new byte[length];

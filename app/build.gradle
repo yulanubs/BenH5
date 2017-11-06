@@ -18,6 +18,10 @@ android {
                 minifyEnabled false
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             }
+            debug {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
         }
 
         packagingOptions {
@@ -48,6 +52,8 @@ android {
 }
 
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
+
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -57,6 +63,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //    compile 'org.benmobile.benh5_v2.library:benh5-v2:0.0.1'
 //    compile 'org.benmobile.bentools.library:bentools:0.0.7'
+    compile 'org.benmobile.analysis.library:analysis:0.0.3'
     compile project(':core')
     compile project(':protocol')
+}
+
+task javadoc(type: Javadoc) {
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
 }

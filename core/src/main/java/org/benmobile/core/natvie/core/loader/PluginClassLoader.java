@@ -10,7 +10,7 @@ import org.benmobile.core.natvie.core.bean.PluginInfo;
 import dalvik.system.DexClassLoader;
 
 public class PluginClassLoader extends DexClassLoader {
-	/**
+	/*
 	 * When the host is the same as the plug-in includes classes: 0 indicates preferred host, 1 said plug-in is preferred
 	 */
 	static int classLoaderType = 0;
@@ -21,15 +21,15 @@ public class PluginClassLoader extends DexClassLoader {
 
 	public PluginInfo plugin;
 	ClassLoader appClassLoader;
-	/**
-	 *
+
+	/*
 	 * the method name: make < BR >
 	 * this method described is: create the plug-in loader instance
 	 * @param dexPath
 	 * @param optimizedDirectory
 	 * @param libraryPath
 	 * @param parent
-	 * @return  PluginClassLoader
+	 * @return
 	 */
 	public static PluginClassLoader make(String dexPath,
 			String optimizedDirectory, String libraryPath, ClassLoader parent) {

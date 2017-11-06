@@ -124,13 +124,13 @@ public class UpdateService extends Service {
 			}
 		}
 	}
-	/**
-	 *
-	 * The method name：registApp<BR>
+
+	/*
+	  * The method name：registApp<BR>
 	 * This method describes  Register the plug-in APP
 	 * @param appId
 	 * @param version
-	 * @param file  void
+	 * @param file
 	 */
 	public void registApp(String appId, String version, File file) {
 
@@ -155,13 +155,11 @@ public class UpdateService extends Service {
 		}
 	}
 
-	/**
-	 *
+	/*
 	 * The method name：getCache<BR>
 	 * This method describes：Get version
-	 * 
 	 * @param appId
-	 * @return OfflineVersion
+	 * @return
 	 */
 	public OfflineVersion getCache(String appId) {
 		synchronized (lock) {
@@ -259,6 +257,11 @@ public class UpdateService extends Service {
 		}.start();
 	}
 
+	/*
+	 *
+	 * @param mContext
+	 * @return
+	 */
 	private static boolean isWifi(Context mContext) {
 		ConnectivityManager connectivityManager = (ConnectivityManager) mContext
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -301,8 +304,7 @@ public class UpdateService extends Service {
 		return versionInfo.appProject + "@" + versionInfo.version + ".apk";
 	}
 
-	/**
-	 *
+	/*
 	 * The method name：getCache<BR>
 	 * This method describes Update complete
 	 * @param appId
@@ -310,7 +312,7 @@ public class UpdateService extends Service {
 	 * @param success
 	 * @param error
 	 * @param installType
-	 * @param cache  void
+	 * @param cache
 	 */
 	public void onComplete(String appId, PluginVersionInfo versionInfo,
 			boolean success, String error, int installType, boolean cache) {
@@ -331,11 +333,9 @@ public class UpdateService extends Service {
 		sendBroadcast(i);
 	}
 
-	/**
-	 *
+	/*
 	 * The method name：onProgress<BR>
 	 * This method describes：Progress information
-	 * 
 	 * @param appId
 	 * @param percent
 	 * @param max

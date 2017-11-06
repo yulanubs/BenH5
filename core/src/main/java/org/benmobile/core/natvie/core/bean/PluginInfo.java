@@ -34,7 +34,7 @@ import java.util.TreeSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-/**
+/*
  *
  * @ the ClassName: PluginInfo < BR >
  * @ the Describe: plug-in information entity class < BR >
@@ -65,13 +65,11 @@ public class PluginInfo {
 		return classLoader;
 	}
 
-	/**
-	 *
+	/*
 	 * the method name: makeDir < BR >
 	 * this method described is: create a folder
-	 * 
 	 * @param dirName
-	 * @return String
+	 * @return
 	 */
 	private String makeDir(String dirName) {
 		String path = storagePath + "/" + dirName;
@@ -79,13 +77,10 @@ public class PluginInfo {
 		return path;
 	}
 
-	/**
-	 *
+	/*
 	 * the method name: getMainActivityName < BR >
 	 * this method describes: get MainActivity name
-	 * 
-	 * @return String
-	 */
+     */
 	public String getMainActivityName() {
 		if (packageInfo.activities != null && packageInfo.activities.length > 0) {
 			return packageInfo.activities[0].name;
@@ -93,13 +88,9 @@ public class PluginInfo {
 		return "";
 	}
 
-	/***
-	 *
-	 * the method name: findAcitivityInfo < BR >
+	/*
+	 *  the method name: findAcitivityInfo < BR >
 	 * this method description is: according to the name of the activity for the activity information
-	 * 
-	 * @param name
-	 * @return ActivityInfo
 	 */
 	public ActivityInfo findAcitivityInfo(String name) {
 		for (ActivityInfo ai : packageInfo.activities) {
@@ -118,12 +109,9 @@ public class PluginInfo {
 		}
 	}
 
-	/**
-	 *
-	 * the method name: initApplication < BR >
+	/*
+	 *  the method name: initApplication < BR >
 	 * description of this method is that the initial Application
-	 * 
-	 * @param context
 	 */
 	private void initApplication(Context context) {
 		String appClassName;
@@ -149,32 +137,26 @@ public class PluginInfo {
 		}
 	}
 
-	/**
-	 *
+
+	 /*
 	 * the method name: getPluginDir < BR >
 	 * this method describes: get plugin Dir
-	 * 
 	 * @param storagePathBase
 	 * @param packageName
-	 * @return String
+	 * @return
 	 */
 	public static String getPluginDir(String storagePathBase, String packageName) {
 		return storagePathBase + "/" + packageName;
 	}
 
-	/**
+	/*
 	 * the method name: load < BR >
 	 * description of this method is that the loading apk
-	 * @ param context
-	 * context
-	 * @ param storagePathBase
-	 * store path
-	 * @ param apkfilePath
-	 * apk path
-	 * @ param packageName
-	 * the package name
-	 * @ return Boolean
-
+	 * @param context
+	 * @param storagePathBase
+	 * @param apkfilePath
+	 * @param packageName
+	 * @return
 	 */
 	public boolean load(Context context, String storagePathBase,
 			String apkfilePath, String packageName) {
@@ -243,12 +225,12 @@ public class PluginInfo {
 		initApplication(context);
 		return true;
 	}
-	/**
-	 *
-	 * the method name: loadAsset < BR >
+
+	/*
+	 *  the method name: loadAsset < BR >
 	 * description of this method is that the load of resources
 	 * @param context
-	 * @param dexPath  void
+	 * @param dexPath
 	 */
 	private void loadAsset(Context context, String dexPath) {
 		try {
@@ -270,9 +252,8 @@ public class PluginInfo {
 		}
 	}
 
-	/**
+	/*
 	 * This code from https://github.com/DroidPluginTeam/DroidPlugin
-	 * 
 	 * @param context
 	 * @param apkfile
 	 * @param nativeLibraryDir

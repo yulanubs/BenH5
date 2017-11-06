@@ -5,7 +5,7 @@ import java.net.URLEncoder;
 import java.text.DecimalFormat;
 public class StringHelper {
 
-	/**  */
+
 	public static final String NULL_STRING = "";
 
 	private static char[] base64EncodeChars = new char[] { 'A', 'B', 'C', 'D',
@@ -25,6 +25,11 @@ public class StringHelper {
 			38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1,
 			-1, -1 };
 
+	/**
+	 *
+	 * @param data
+	 * @return
+	 */
 	public static String encode(byte[] data) {
 		StringBuffer sb = new StringBuffer();
 		int len = data.length;
@@ -59,6 +64,11 @@ public class StringHelper {
 		return sb.toString();
 	}
 
+	/**
+	 *
+	 * @param str
+	 * @return
+	 */
 	public static byte[] decode(String str) {
 		ByteArrayOutputStream buf = null;
 		try {
@@ -122,10 +132,13 @@ public class StringHelper {
 		}
 
 	}
-	
+
 
 	/**
 	 *
+	 * @param b
+	 * @return
+	 * @throws Exception
 	 */
 	public static String byte2hex(byte[] b) throws Exception {
 		String result = null;
@@ -141,15 +154,14 @@ public class StringHelper {
 			result = hs.toString().toUpperCase();
 		return result;
 	}
-	
-    /**  
-     *
-     *   
-     * @param src  md5
-     * @param enc
-     * @return  
-     * @throws Exception  
-     */
+
+	/**
+	 *
+	 * @param src
+	 * @param enc
+	 * @return
+	 * @throws Exception
+	 */
     public static String doBase64URLEncode(String src, String enc) throws Exception {
 		String result = null;
 
@@ -163,14 +175,14 @@ public class StringHelper {
 
     	return result;
 	}
-	
+
 	/**
-     *   
-     * @param src
-     * @param enc
-     * @return  
-     * @throws Exception  
-     */
+	 *
+	 * @param src
+	 * @param enc
+	 * @return
+	 * @throws Exception
+	 */
     public static String doURLEncode(String src, String enc) throws Exception {
 		String result = "";
 

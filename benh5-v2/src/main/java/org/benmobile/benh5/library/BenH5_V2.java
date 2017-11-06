@@ -6,8 +6,8 @@ public class BenH5_V2 {
     private static BenH5_V2 instance;
 
     /**
-     * 版本信息
-     * @return  BenH5_V2 Instan
+     *获取实例
+     * @return
      */
     public static BenH5_V2 getInstance() {
         if (instance == null)
@@ -20,8 +20,8 @@ public class BenH5_V2 {
 
     /**
      *
-     * @param name
-     * @return BenH5Info
+     * @param name    应用名称
+     * @return  应用名称+框架版本信息
      */
     public String getBenH5Info(String name) {
         return name + "_BenH5_V2" ;

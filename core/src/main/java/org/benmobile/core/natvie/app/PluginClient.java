@@ -84,11 +84,11 @@ public abstract class PluginClient {
 	}
 	
 	protected abstract void onInit(Context context);
-	/**
-	 * 
+
+	/*
 	 * The method name：start<BR>
 	 * This method describes: start the plugin
-	 * @param context  void
+	 * @param context
 	 */
 	protected void start(Context context) {
 		Intent i = new Intent(context, UpdateService.class);
@@ -96,7 +96,7 @@ public abstract class PluginClient {
 		//Registered broadcasting
 		registerBroadcastReceiver();//
 	}
-	/**
+	/*
 	 *
 	 * The method name：stop<BR>
 	 * This method describes: Stop plug - in update service
@@ -107,43 +107,41 @@ public abstract class PluginClient {
 		context.unregisterReceiver(receiver);
 	}
 
-	//public abstract List<PlugInfo> installedList();
-	/**
-	 *
+	/*
 	 * The method name：install<BR>
 	 * This method describes Install plug-ins
 	 * @param file
-	 * @param id  void
+	 * @param id
 	 */
 	protected abstract void install(String file, String id);
-	/**
-	 *
+
+	/*
 	 * The method name：uninstall<BR>
 	 * This method describes  Uninstall plug-in
-	 * @param id  void
+	 * @param id
 	 */
 	protected abstract void uninstall(String id);
-	/**
-	 *
+
+	/*
 	 * The method name：isInstalled<BR>
 	 * This method describes  Verify that the plug-in is installed
 	 * @param id
-	 * @return  boolean
+	 * @return
 	 */
 	protected abstract boolean isInstalled(String id);
-	/**
-	 *
+
+	/*
 	 * The method name：isLoaded<BR>
 	 * This method describes Verify that the plug-in is loaded
 	 * @param id
-	 * @return  boolean
+	 * @return
 	 */
 	public boolean isLoaded(String id) { return isInstalled(id); }
-	/**
-	 *
+
+	/*
 	 * The method name：load<BR>
 	 * This method describes  Load plug-in
-	 * @param id  void
+	 * @param id
 	 */
 	public void load(String id) {
 		log.d("load: " + id);
@@ -160,10 +158,11 @@ public abstract class PluginClient {
 		}
 	}
 
-	/**
+	/*
 	 * load and run main Activity
 	 * @param id
 	 * @param ctx
+	 * @param finishLaunchActivity
 	 */
 	public void launch(String id, Context ctx, boolean finishLaunchActivity) {
 		log.d("launch: " + id);
@@ -189,12 +188,12 @@ public abstract class PluginClient {
 			}
 		}
 	}
-	/**
-	 *
+
+	/*
 	 * The method name：downloadPlugin<BR>
 	 * This method describes   Download Plug-in
-	 * @param appId	appid
-	 * @param installType  Installation type
+	 * @param appId
+	 * @param installType
 	 */
 	private void downloadPlugin(String appId, int installType) {
 		Intent i = new Intent(context, UpdateService.class);
@@ -204,14 +203,14 @@ public abstract class PluginClient {
 		i.putExtras(b);
 		context.startService(i);
 	}
-	/**
-	 *
+
+	/*
 	 * The method name：onDownload<BR>
 	 * This method describes  Handling downloaded plug-ins
 	 * @param appId
 	 * @param versionInfo
 	 * @param installType
-	 * @param cache  void
+	 * @param cache
 	 */
 	private void onDownload(String appId, PluginVersionInfo versionInfo
 			, int installType, boolean cache) {
@@ -247,8 +246,8 @@ public abstract class PluginClient {
 			tempContext = null;
 		}
 	}
-	/**
-	 *
+
+	/*
 	 * The method name：registerBroadcastReceiver<BR>
 	 * This method describes    Registered broadcasting
 	 */
@@ -259,7 +258,7 @@ public abstract class PluginClient {
 		IntentFilter filter2 = new IntentFilter(UpdateService.ProgressAction);
 		context.registerReceiver(receiver, filter2);
 	}
-	/**
+	/*
 	 * 
 		 * @ClassName:MessageReceiver <BR>
 	     * @Describe：Information broadcasting, processing plug-in update dynamics<BR>

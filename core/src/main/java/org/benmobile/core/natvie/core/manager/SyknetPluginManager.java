@@ -28,7 +28,7 @@ import org.benmobile.core.natvie.io.FileUtil;
 import org.benmobile.core.natvie.log.SLogger;
 import org.benmobile.core.natvie.utils.Reflection;
 
-/**
+/*
  * 
 	 * @ClassName:AxPluginManager <BR>
      * @Describe：Used to manage the plugin<BR>

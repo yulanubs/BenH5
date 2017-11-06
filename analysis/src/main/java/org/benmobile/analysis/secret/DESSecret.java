@@ -11,7 +11,14 @@ import android.util.Base64;
 import org.benmobile.analysis.tools.Logger;
 
 public class DESSecret {
-
+	/**
+	 *
+	 * @param encryptString
+	 * @param encryptKey
+	 * @param iv
+	 * @return
+	 * @throws Exception
+	 */
 	public static String encryptDES(String encryptString, String encryptKey,byte[] iv)
 			throws Exception {
 		IvParameterSpec zeroIv = new IvParameterSpec(iv);

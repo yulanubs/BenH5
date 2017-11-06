@@ -1,27 +1,27 @@
 apply plugin: 'com.android.library'
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'benh5-v2'
-
-    publishedGroupId = 'org.benmobile.benh5_v2.library'
-    libraryName = 'core'
-    artifact = 'core'
-
-    libraryDescription = 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）.'
-
-    siteUrl = 'https://github.com/yulanubs/BenH5'
-    gitUrl = 'https://github.com/yulanubs/BenH5.git'
-
-    libraryVersion = '0.0.4'
-
-    developerId = 'yulanubs'
-    developerName = 'Jekshow'
-    developerEmail = 'yulanubs123@qq.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//ext {
+//    bintrayRepo = 'maven'
+//    bintrayName = 'benh5-v2'
+//
+//    publishedGroupId = 'org.benmobile.benh5_v2.library'
+//    libraryName = 'core'
+//    artifact = 'core'
+//
+//    libraryDescription = 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）.'
+//
+//    siteUrl = 'https://github.com/yulanubs/BenH5'
+//    gitUrl = 'https://github.com/yulanubs/BenH5.git'
+//
+//    libraryVersion = '0.0.5'
+//
+//    developerId = 'yulanubs'
+//    developerName = 'Jekshow'
+//    developerEmail = 'yulanubs123@qq.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 android {
     compileSdkVersion 21
     buildToolsVersion '21.1.2'
@@ -40,6 +40,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
     }
@@ -78,5 +82,108 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 }
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+
+/** 以下开始是将Android Library上传到jcenter的相关配置**/
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+//项目主页
+def siteUrl = 'https://github.com/yulanubs/BenH5'    // project homepage
+//项目的版本控制地址
+def gitUrl = 'https://github.com/yulanubs/BenH5.git' // project git
+
+//发布到组织名称名字，必须填写
+group = "org.benmobile.benh5_v2.library"
+//发布到JCenter上的项目名字，必须填写
+def libName = "core"
+// 版本号，下次更新是只需要更改版本号即可
+version = "0.0.6"
+/**  上面配置后上传至jcenter后的编译路径是这样的： compile 'cn.bluemobi.dylan:sqlitelibrary:1.0'  **/
+
+//生成源文件
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+//生成文档
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+    options.author true
+    options.version true
+    options.links "https://github.com/yulanubs/BenH5/tree/master/core/docs/javadoc"
+    failOnError false
+}
+
+//文档打包成jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+//拷贝javadoc文件
+task copyDoc(type: Copy) {
+    from "${buildDir}/docs/"
+    into "docs"
+}
+
+//上传到jcenter所需要的源码文件
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// 配置maven库，生成POM.xml文件
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）'
+                        url 'https://github.com/yulanubs/BenH5'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'yulanubs'
+                        name 'Jekshow'
+                        email 'yulanubs123@qq.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+//上传到jcenter
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = libName    //发布到JCenter上的项目名字，必须填写
+        desc = 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）'    //项目描述
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}

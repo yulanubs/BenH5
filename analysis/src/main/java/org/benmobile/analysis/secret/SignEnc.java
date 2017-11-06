@@ -16,14 +16,17 @@ public class SignEnc {
 	public static final String VERIFY_ERROR = "verify error!";
 	public static final String SECRETTYPE = "0";
 	/**
+	 *
 	 */
 	public static final String[]SIGN_TYPE = new String[]{"1","2" };
-	
-	
+
+
 	/**
+	 *
 	 * @param params
 	 * @param secret
-	 * @throws Exception 
+	 * @return
+	 * @throws SignEncException
 	 */
 	public static String sign(String params, String secret) throws SignEncException {
 		String result = null;
@@ -32,13 +35,14 @@ public class SignEnc {
 		
 		return result;
 	}
-	
-	
+
 
 	/**
-	 * hmac
+	 *
 	 * @param params
-	 * @param secret APP_SECRET
+	 * @param secret
+	 * @return
+	 * @throws SignEncException
 	 */
 	public static String hmacSign(String params, String secret) throws SignEncException {
 		String result = null;
@@ -54,9 +58,9 @@ public class SignEnc {
 		}
 		return result;
 	}
-	
+
 	/**
-	 * HMAC
+	 *
 	 * @param data
 	 * @param key
 	 * @param characterCodeType
@@ -66,11 +70,13 @@ public class SignEnc {
 		byte[] b = HMACSHA1.getHmacSHA1(data, key);
 		return b;
 	}
+
 	/**
 	 *
-	 * @param params  
+	 * @param params
 	 * @param orgin
 	 * @return
+	 * @throws Exception
 	 */
 	private static StringBuffer getBeforeSign(String params, StringBuffer orgin) throws Exception {
 		try{
@@ -97,10 +103,9 @@ public class SignEnc {
 		}
 		return orgin;
 	}
-	
-	
+
 	/**
-	 * test only!!!!!!
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {

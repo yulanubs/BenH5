@@ -1,7 +1,7 @@
 package org.benmobile.core.natvie.update.bean;
 
 import java.io.File;
-/**
+/*
  * 
 	 * @ClassName: OfflineVersion<BR>
      * @Describe：OfflineVersion information<BR>

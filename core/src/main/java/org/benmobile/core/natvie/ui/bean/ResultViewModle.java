@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
+/*
  * @author unkown
  * @marker liukun@tomstaff.com
  * @since 2016-4-7

@@ -8,6 +8,11 @@ public class SHA1 {
 
 	private int[] tmpData = new int[80];
 
+	/**
+	 *
+	 * @param bytedata
+	 * @return
+	 */
 	private int process_input_bytes(byte[] bytedata) {
 		System.arraycopy(abcde, 0, digestInt, 0, abcde.length);
 
@@ -26,7 +31,11 @@ public class SHA1 {
 		return 20;
 	}
 
-
+	/**
+	 *
+	 * @param bytedata
+	 * @return
+	 */
 	private byte[] byteArrayFormatData(byte[] bytedata) {
 
 		int zeros = 0;
@@ -171,13 +180,23 @@ public class SHA1 {
 		}
 	}
 
-
+	/**
+	 *
+	 * @param bytedata
+	 * @param i
+	 * @return
+	 */
 	private int byteArrayToInt(byte[] bytedata, int i) {
 		return ((bytedata[i] & 0xff) << 24) | ((bytedata[i + 1] & 0xff) << 16)
 				| ((bytedata[i + 2] & 0xff) << 8) | (bytedata[i + 3] & 0xff);
 	}
 
-
+	/**
+	 *
+	 * @param intValue
+	 * @param byteData
+	 * @param i
+	 */
 	private void intToByteArray(int intValue, byte[] byteData, int i) {
 		byteData[i] = (byte) (intValue >>> 24);
 		byteData[i + 1] = (byte) (intValue >>> 16);
@@ -185,7 +204,11 @@ public class SHA1 {
 		byteData[i + 3] = (byte) intValue;
 	}
 
-
+	/**
+	 *
+	 * @param ib
+	 * @return
+	 */
 	private static String byteToHexString(byte ib) {
 		char[] Digit = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
 				'b', 'c', 'd', 'e', 'f' };
@@ -198,7 +221,11 @@ public class SHA1 {
 		return s;
 	}
 
-
+	/**
+	 *
+	 * @param bytearray
+	 * @return
+	 */
 	private static String byteArrayToHexString(byte[] bytearray) {
 		String strDigest = "";
 
@@ -209,7 +236,11 @@ public class SHA1 {
 		return strDigest;
 	}
 
-
+	/**
+	 *
+	 * @param byteData
+	 * @return
+	 */
 	public byte[] getDigestOfBytes(byte[] byteData) {
 		process_input_bytes(byteData);
 
@@ -222,7 +253,11 @@ public class SHA1 {
 		return digest;
 	}
 
-
+	/**
+	 *
+	 * @param byteData
+	 * @return
+	 */
 	public String getDigestOfString(byte[] byteData) {
 		return byteArrayToHexString(getDigestOfBytes(byteData));
 	}

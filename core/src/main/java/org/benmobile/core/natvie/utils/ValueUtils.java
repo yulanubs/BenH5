@@ -10,20 +10,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**
+/*
  * Class description: value judgment helper classes
  * @author  tianshuguang@tomstaff.com
  * @date    2014-7-25
  * @version 1.0
  */
 public class ValueUtils {
-	/**
-	 *
-	 * The method name：isNotNullString<BR>
+	/*
+	 The method name：isNotNullString<BR>
 	 * This method describes：The string; Sentenced to empty
-	 * 
 	 * @param presentStationOrderId
-	 * @return boolean
+	 * @return
 	 */
 	public static boolean isNotNullString(String presentStationOrderId) {
 		return null != presentStationOrderId
@@ -31,26 +29,30 @@ public class ValueUtils {
 				&& !presentStationOrderId.equals("null");
 	}
 
-	/**
-	 * @description To judge whether the List is not empty
+	/*
+	 *  To judge whether the List is not empty
 	 * @param noteList
-	 * @return boolean
+	 * @param noteList
+	 * @return
 	 */
 	public static boolean isListNotEmpty(List<?> noteList) {
 		return null != noteList && noteList.size() > 0;
 	}
-	/**
-	 * @description To judge whether the List is empty
+
+	/*
+	 * To judge whether the List is empty
 	 * @param noteList
-	 * @return boolean
+	 * @param noteList
+	 * @return
 	 */
 	public static boolean isListEmpty(List<?> noteList) {
 		return null == noteList || noteList.size() == 0;
 	}
-	/**
-	 * @description To determine whether a String String is empty
+
+	/*
+	 *  To determine whether a String String is empty
 	 * @param value
-	 * @return boolean
+	 * @return
 	 */
 	public static boolean isStrEmpty(String value) {
 		if (null == value || "".equals(value.trim())) {
@@ -58,34 +60,36 @@ public class ValueUtils {
 		} 
 		return false;
 	}
-	/**
-	 * @description To determine whether a String String is not empty
+
+	/*
+	 *  To judge whether the object is not empty
 	 * @param value
-	 * @return boolean
+	 * @return
 	 */
 	public static boolean isStrNotEmpty(String value) {
 		return !isStrEmpty(value);
 	}
-	/**
-	 * @description To judge whether the object is not empty
+
+	/*
+	 *  To judge whether the object is not empty
 	 * @param object
-	 * @return boolean
+	 * @return
 	 */
 	public static boolean isNotEmpty(Object object) {
 		return null != object;
 	}
-	/**
-	 * @description To judge whether the object is not empty
+
+	/*
+	 * To judge whether the object is not empty
 	 * @param object
-	 * @return boolean
+	 * @return
 	 */
 	public static boolean isEmpty(Object object) {
 		return null == object;
 	}
 
-	/**
-	 *In the content of judgment in multiple EditText or TextView have a null return true
-	 * 
+	/*
+	 * In the content of judgment in multiple EditText or TextView have a null return true
 	 * @param views
 	 * @return
 	 */
@@ -108,10 +112,9 @@ public class ValueUtils {
 		}
 		return false;
 	}
-	
-	/**
-	 *The Boolean true into "1" false into "0"
-	 * 
+
+	/*
+	*The Boolean true into "1" false into "0"
 	 * @param b
 	 * @return
 	 */
@@ -127,10 +130,12 @@ public class ValueUtils {
 		Matcher matcher = p.matcher(str);  
 		return matcher.matches();
 	}
-	
-	/**
+
+	/*
 	 * Accurate to percentile, decimal places less than zero.
 	 * 	For example: 20 > 20.00, 21.1111 > 21.11, 21.55555 > 21.56
+	 * @param number
+	 * @return
 	 */
 	public static String format2Percentile(String number) {
 		String strFormat = "%,.2f";
@@ -149,16 +154,21 @@ public class ValueUtils {
 		}
 		return String.format(strFormat, doubleMoney);
 	}
-	
-	/**
-	 * Accurate to percentile, decimal places less than zero.
+
+	/*
+	* Accurate to percentile, decimal places less than zero.
 	 * 	For example: 20 > 20.00, 21.1111 > 21.11, 21.55555 > 21.56
+	 * @param number
+	 * @return
 	 */
 	public static String format2Percentile(double number) {
 		return format2Percentile(Double.toString(number));
 	}
-	/**
+
+	/*
 	 * Upc format to add Spaces
+	 * @param upc
+	 * @return
 	 */
 	public static String formatUpc(String upc) {
 		StringBuffer buffer = new StringBuffer();

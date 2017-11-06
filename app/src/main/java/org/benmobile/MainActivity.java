@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import org.benmobile.activity.BaseActivity;
+import org.benmobile.analysis.SyknetMobileLog;
 import org.benmobile.config.ConstData;
 import org.benmobile.coolhttp.http.CoolHttp;
 import org.benmobile.coolhttp.http.HttpListener;
@@ -143,6 +144,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     public void testNet() {
+        SyknetMobileLog.DEBUG=true;
         final int mRequestCode = 1100;
         String eventAction = "0x10001";
         Map<String, String> data = new HashMap<String, String>();
