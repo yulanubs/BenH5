@@ -20,6 +20,7 @@ import org.benmobile.entity.app.AppInfo;
 import org.benmobile.log.BenH5Log;
 import org.benmobile.protocol.ComponentRegister;
 import org.benmobile.utils.DIdUtil;
+import org.benmobile.utils.PingTest;
 
 
 /**
@@ -80,7 +81,6 @@ public class BenH5Application extends Application {
        initMobileLog();
        //初始化中间件
         initProtocol();
-
 
 
     }

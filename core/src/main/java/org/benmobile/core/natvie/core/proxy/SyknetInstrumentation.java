@@ -23,7 +23,7 @@ import android.view.LayoutInflater;
 import android.view.Window;
 
 public class SyknetInstrumentation extends InstrumentationProxy {
-	/**插件管理器*/
+	/**The plug-in manager*/
 	public SyknetPluginManager pluginManager;
 	
 	private Class<?> safeLoader(String className, ClassLoader loader) {

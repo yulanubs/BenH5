@@ -11,10 +11,9 @@ import java.lang.reflect.Method;
 /**
  * 
 	 * @ClassName: Reflection<BR>
-     * @Describe：反射辅助工具类<BR>
+     * @Describe：Reflection auxiliary tools<BR>
      * @Author: Jekshow
-	 * @Extends：<BR>
-     * @Version:1.0 
+     * @Version:1.0
      * @date:2016-10-20 下午3:36:53
  */
 public class Reflection {

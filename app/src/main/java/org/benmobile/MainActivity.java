@@ -3,16 +3,14 @@ package org.benmobile;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.benmobile.activity.BaseActivity;
 import org.benmobile.config.ConstData;
@@ -23,6 +21,7 @@ import org.benmobile.coolhttp.http.Response;
 import org.benmobile.coolhttp.http.StringRequest;
 import org.benmobile.core.natvie.app.PluginClient;
 import org.benmobile.core.natvie.utils.ValueUtils;
+import org.benmobile.log.Logger;
 import org.benmobile.protocol.ComponentRegister;
 import org.benmobile.protocol.Protocol;
 import org.benmobile.protocol.bean.AddressBean;
@@ -31,68 +30,107 @@ import org.benmobile.protocol.config.PluginConstData;
 import org.benmobile.protocol.event.GetMsgInfoListener;
 import org.benmobile.protocol.event.OnAppNetQuestListener;
 import org.benmobile.protocol.serviceimpl.AppNetQuestService;
+import org.benmobile.utils.BatchPingIpThread;
+import org.benmobile.utils.Ping;
+import org.benmobile.utils.PingTest;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private String pluginid = "com.syknet.addressplugin";
-    private RelativeLayout rl_appdemo, rl_ui_wgt, rl_windows;
-
+    private RelativeLayout rl_appdemo, rl_ui_wgt, rl_windows,rl_oder_sdk,rl_extent,rl_net,rlui_native,rl_sys;
+    private ImageView iv_meum,iv_msg;
     private String tag = PluginConstData.TAG_HOMEPROJECT;
     public final int requestcode = 100;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        iv_meum= (ImageView) this.findViewById(R.id.iv_meum);
+        iv_msg= (ImageView) this.findViewById(R.id.iv_msg);
         rl_appdemo = (RelativeLayout) this.findViewById(R.id.rl_appdemo);
         rl_ui_wgt = (RelativeLayout) this.findViewById(R.id.rl_ui_wgt);
+        rl_oder_sdk = (RelativeLayout) this.findViewById(R.id.rl_oder_sdk);
+        rl_sys = (RelativeLayout) this.findViewById(R.id.rl_sys);
+        rlui_native = (RelativeLayout) this.findViewById(R.id.rlui_native);
+        rl_net = (RelativeLayout) this.findViewById(R.id.rl_net);
+        rl_extent = (RelativeLayout) this.findViewById(R.id.rl_extent);
         rl_windows = (RelativeLayout) this.findViewById(R.id.rl_windows);
-        rl_appdemo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PluginClient.getInstance().launch(pluginid, MainActivity.this, false);
-            }
-        });
-        rl_ui_wgt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        setViewEvent();
+    }
 
-                request();
-            }
-        });
-        rl_windows.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testNet();
-            }
-        });
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    private void setViewEvent() {
+        iv_meum.setOnClickListener(this);
+        iv_msg.setOnClickListener(this);
+        rl_net.setOnClickListener(this);
+        rl_oder_sdk.setOnClickListener(this);
+        rl_appdemo.setOnClickListener(this);
+        rl_windows.setOnClickListener(this);
+        rl_ui_wgt.setOnClickListener(this);
+        rl_sys.setOnClickListener(this);
+        rlui_native.setOnClickListener(this);
+        rl_extent.setOnClickListener(this);
     }
 
     private void request() {
+        final Ping ping=new Ping();
+         final String ipAddress = "42.51.33.155";
+//        PingTest.test0();
+//        PingTest.test1();
+
+       new Thread(new Runnable() {
+            @Override
+            public void run() {
+                {
+                    Queue<String> allIp = new LinkedList<String>();
+
+
+                    allIp.offer("123.184.41.48");
+                    allIp.offer("59.46.81.105");
+
+                    allIp.offer("42.51.33.155");
+                    BatchPingIpThread batchPingIpThread = new BatchPingIpThread(allIp, 3);
+                    batchPingIpThread.setIpsOK("");
+                    batchPingIpThread.setIpsNO("");
+                    batchPingIpThread.startPing();
+                    System.out.println("ipsOK:" + batchPingIpThread.getIpsOK());
+//                    System.out.print("ipsNO:" + batchPingIpThread.getIpsNO());
+//                    PingTest.test1();
+//                    try {
+//
+//                        ping. ping02(ipAddress);
+//                        System.out.println("网络是否可用:"+ping.ping(ipAddress));
+////                   System.out.println(ping.ping(ipAddress, 5, 5000));
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+                }
+            }
+        }).start();
+
+
+
         // 测试接口见：http://api.nohttp.net
 
         String url = "http://api.nohttp.net/upload";
+//        String url = "http://www.ule.com/ulewap/recommond/ylxd/index.html";
         StringRequest request = new StringRequest(url, Method.POST);
         request.addParams("name", "yanzhenjie");
         request.addParams("pwd", 123);
-
+        Logger.e("---开始:"+System.currentTimeMillis()+"");
         CoolHttp.asyncRequest(request, new HttpListener<String>() {
             @Override
             public void onSucceed(Response<String> response) {
+                Logger.e("---结束："+System.currentTimeMillis()+"");
                 String result = response.getResult();
                 Log.e("CoolHttp", result);
+
                 Toast.makeText(MainActivity.this, result.toString(), Toast.LENGTH_LONG).show();
             }
 
@@ -125,7 +163,7 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
 
-        AppNetQuestService service = new AppNetQuestService(mApp.configs.SERVER_BENH5_VPS,ConstData.LOGIN,eventAction, data, tag, mRequestCode, new OnAppNetQuestListener() {
+        AppNetQuestService service = new AppNetQuestService(mApp.configs.SERVER_BENH5_VPS,ConstData.check_updateappplugin,eventAction, data, tag, mRequestCode, new OnAppNetQuestListener() {
             @Override
             public void onMsgSucceed(String pluignId, int requestCode, int resultCode, Protocol msgBean) {
                 {
@@ -186,39 +224,40 @@ public class MainActivity extends BaseActivity {
 //        }
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.iv_meum:
+                Toast.makeText(MainActivity.this, "菜单", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.iv_msg:
+                Toast.makeText(MainActivity.this, "消息", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.rl_oder_sdk:
+                Toast.makeText(MainActivity.this, "第三方SDK", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.rl_extent:
+                Toast.makeText(MainActivity.this, "扩展功能", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.rlui_native:
+                Toast.makeText(MainActivity.this, "原生UI", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.rl_net:
+                Toast.makeText(MainActivity.this, "网络通讯", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.rl_sys:
+                Toast.makeText(MainActivity.this, "系统调用", Toast.LENGTH_LONG).show();
+            break;
+            case R.id.rl_windows:
+                testNet();
+            break;
+            case R.id.rl_appdemo:
+               launchPlugin(pluginid,false);
+            break;
+            case R.id.rl_ui_wgt:
+                request();
+            break;
+        }
     }
 }

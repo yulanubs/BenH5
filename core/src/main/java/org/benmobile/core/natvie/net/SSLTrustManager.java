@@ -13,10 +13,9 @@ import javax.net.ssl.X509TrustManager;
 /**
  * 
 	 * @ClassName: SSLTrustManager<BR>
-     * @Describe:SSL认证<BR>
+     * @Describe:SSL<BR>
      * @Author: Jekshow
-	 * @Extends：<BR>
-     * @Version:1.0 
+     * @Version:1.0
      * @date:2016-10-20 下午3:14:21
  */
 public class SSLTrustManager implements TrustManager,
@@ -48,11 +47,12 @@ public class SSLTrustManager implements TrustManager,
         }
          
             @Override
-        public boolean verify(String urlHostName, SSLSession session) { //允许所有主机
+        public boolean verify(String urlHostName, SSLSession session) {
+                //To allow all hosts
             return true;
         }
         
-   //封装
+
 public static HttpURLConnection connect(String strUrl) throws Exception {
          
         TrustManager[] trustAllCerts = new TrustManager[1];

@@ -11,7 +11,7 @@ import dalvik.system.DexClassLoader;
 
 public class PluginClassLoader extends DexClassLoader {
 	/**
-	 * 当宿主和插件包含相同类时：0表示宿主优先，1表示插件优先
+	 * When the host is the same as the plug-in includes classes: 0 indicates preferred host, 1 said plug-in is preferred
 	 */
 	static int classLoaderType = 0;
 
@@ -22,9 +22,9 @@ public class PluginClassLoader extends DexClassLoader {
 	public PluginInfo plugin;
 	ClassLoader appClassLoader;
 	/**
-	 * 
-	 * 方法名：make<BR>  
-	 * 此方法描述的是：   创建插件加载器实例
+	 *
+	 * the method name: make < BR >
+	 * this method described is: create the plug-in loader instance
 	 * @param dexPath
 	 * @param optimizedDirectory
 	 * @param libraryPath

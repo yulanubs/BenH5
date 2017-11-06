@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/analysis/analysis.iml" filepath="$PROJECT_DIR$/analysis/analysis.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/benh5-v2/benh5-v2.iml" filepath="$PROJECT_DIR$/benh5-v2/benh5-v2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bentools/bentools.iml" filepath="$PROJECT_DIR$/bentools/bentools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/benh5rad/benh5rad.iml" filepath="$PROJECT_DIR$/benh5rad/benh5rad.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/protocol/protocol.iml" filepath="$PROJECT_DIR$/protocol/protocol.iml" />
     </modules>

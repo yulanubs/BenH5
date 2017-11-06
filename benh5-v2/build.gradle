@@ -12,7 +12,7 @@ ext {
     siteUrl = 'https://github.com/yulanubs/BenH5'
     gitUrl = 'https://github.com/yulanubs/BenH5.git'
 
-    libraryVersion = '0.0.4'
+    libraryVersion = '0.0.7'
 
     developerId = 'yulanubs'
     developerName = 'Jekshow'
@@ -24,7 +24,7 @@ ext {
 }
 android {
     compileSdkVersion 21
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         minSdkVersion 10
@@ -75,14 +75,12 @@ android {
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:21.0.0'
     testCompile 'junit:junit:4.12'
-
-
 }
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

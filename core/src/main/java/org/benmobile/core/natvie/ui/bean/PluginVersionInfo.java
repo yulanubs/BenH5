@@ -15,25 +15,24 @@ import android.util.Log;
 /**
  * 
 	 * @ClassName: VersionInfo<BR>
-     * @Describe：app插件版本信息实体类<BR>
+     * @Describe：App plug-in version information entity class<BR>
      * @Author: Jekshow
-	 * @Extends：<BR>
-     * @Version:1.0 
+     * @Version:1.0
      * @date:2016-8-3 下午1:32:09
  */
 public  class PluginVersionInfo implements Serializable{
 	private static final long serialVersionUID = 8445572940087456648L;
-	public String id;				//插件id
-	public String fileName;			//插件文件名称
-	public String whatsNew;			//更新文案
-	public long fileTime;			//插件上传时间
-	public long fileSize;			//插件文件大小
-	public String appProject;		//插件特殊编号
-	public String digest;			//插件校验码
-	public String version;			//插件版本号
-	public String fileUrl;			//插件下载链接
+	public String id;				//The plug-in id
+	public String fileName;		//The plugin file name
+	public String whatsNew;		//Update the document
+	public long fileTime;			//Upload time
+	public long fileSize;			//The plugin file size
+	public String appProject;		//The plug-in specific number
+	public String digest;			//Plug-in check code
+	public String version;			//The plug-in version number
+	public String fileUrl;			//The plug-in download link
 	public String appid;			//AppId
-	public String pkg;				//插件应用包名
+	public String pkg;				//The plug-in application package name
 	
 
 	

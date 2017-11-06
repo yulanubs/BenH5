@@ -8,6 +8,6 @@ package org.benmobile.core.natvie.app;
 public class Plugin {
 	/**ID*/
 	public String id;
-	/**包名*/
+	/**package*/
 	public String packageName;
 }

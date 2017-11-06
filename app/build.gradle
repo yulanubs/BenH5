@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '21.1.2'
     defaultConfig {
         applicationId "org.benmobile"
         minSdkVersion 10
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
 
 
     }
@@ -56,8 +56,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.0'
     testCompile 'junit:junit:4.12'
     //    compile 'org.benmobile.benh5_v2.library:benh5-v2:0.0.1'
-    compile 'org.benmobile.bentools.library:bentools:0.0.7'
+//    compile 'org.benmobile.bentools.library:bentools:0.0.7'
     compile project(':core')
     compile project(':protocol')
-    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }

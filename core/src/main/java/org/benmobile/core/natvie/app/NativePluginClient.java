@@ -18,16 +18,16 @@ import org.benmobile.core.natvie.core.bean.PluginInfo;
 import org.benmobile.core.natvie.core.manager.SyknetPluginManager;
 
 public class NativePluginClient extends PluginClient {
-	/**插件管理器*/
+	/**The plug-in manager*/
 	private SyknetPluginManager plugMgr;
-	/**插件容器*/
+	/**Plug-in container*/
 	private Map<String, String> plugMap = new HashMap<String, String>();
 
 	@Override
 	protected void onInit(Context context) {
-		//实例化插件管理器
+		//Instantiate plug-in manager
 		plugMgr = SyknetPluginManager.getInstance();
-		//初始化插件管理器
+		//Initializing plug-in manager
 		plugMgr.init(context);
 	}
 

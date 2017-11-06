@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/yulanubs/BenH5'
     gitUrl = 'https://github.com/yulanubs/BenH5.git'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.4'
 
     developerId = 'yulanubs'
     developerName = 'Jekshow'
@@ -25,7 +25,7 @@ ext {
 }
 android {
     compileSdkVersion 21
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "21.1.2"
 
     defaultConfig {
         minSdkVersion 10

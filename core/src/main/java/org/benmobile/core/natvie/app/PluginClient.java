@@ -86,19 +86,20 @@ public abstract class PluginClient {
 	protected abstract void onInit(Context context);
 	/**
 	 * 
-	 * 方法名：start<BR>  
-	 * 此方法描述的是：   启动插件
+	 * The method name：start<BR>
+	 * This method describes: start the plugin
 	 * @param context  void
 	 */
 	protected void start(Context context) {
 		Intent i = new Intent(context, UpdateService.class);
 		context.startService(i);
-		registerBroadcastReceiver();//注册广播
+		//Registered broadcasting
+		registerBroadcastReceiver();//
 	}
 	/**
-	 * 
-	 * 方法名：stop<BR>  
-	 * 此方法描述的是：  停止插件更新服务
+	 *
+	 * The method name：stop<BR>
+	 * This method describes: Stop plug - in update service
 	 */
 	protected void stop() {
 		Intent i = new Intent(context, UpdateService.class);
@@ -108,52 +109,52 @@ public abstract class PluginClient {
 
 	//public abstract List<PlugInfo> installedList();
 	/**
-	 * 
-	 * 方法名：install<BR>  
-	 * 此方法描述的是： 安装插件  
+	 *
+	 * The method name：install<BR>
+	 * This method describes Install plug-ins
 	 * @param file
 	 * @param id  void
 	 */
 	protected abstract void install(String file, String id);
 	/**
-	 * 
-	 * 方法名：uninstall<BR>  
-	 * 此方法描述的是：   卸载插件
+	 *
+	 * The method name：uninstall<BR>
+	 * This method describes  Uninstall plug-in
 	 * @param id  void
 	 */
 	protected abstract void uninstall(String id);
 	/**
-	 * 
-	 * 方法名：isInstalled<BR>  
-	 * 此方法描述的是：  验证插件是否安装 
+	 *
+	 * The method name：isInstalled<BR>
+	 * This method describes  Verify that the plug-in is installed
 	 * @param id
 	 * @return  boolean
 	 */
 	protected abstract boolean isInstalled(String id);
 	/**
-	 * 
-	 * 方法名：isLoaded<BR>  
-	 * 此方法描述的是：  验证插件是否已加载 
+	 *
+	 * The method name：isLoaded<BR>
+	 * This method describes Verify that the plug-in is loaded
 	 * @param id
 	 * @return  boolean
 	 */
 	public boolean isLoaded(String id) { return isInstalled(id); }
 	/**
-	 * 
-	 * 方法名：load<BR>  
-	 * 此方法描述的是：   加载插件
+	 *
+	 * The method name：load<BR>
+	 * This method describes  Load plug-in
 	 * @param id  void
 	 */
 	public void load(String id) {
 		log.d("load: " + id);
 		
 		if (!isInstalled(id)) {
-			//如果插件未安装，则开启插件更新服务
+			//If the plug-in is not installed, then the plug-in update service is opened
 			downloadPlugin(id
 					, UpdateService.installType_install);
 		} else {
 			if (listener != null) {
-				//如果监听器不为空，加载插件
+				//If the listener is not empty, load the plug-in
 				listener.onLoaded(id);
 			}
 		}
@@ -189,11 +190,11 @@ public abstract class PluginClient {
 		}
 	}
 	/**
-	 * 
-	 * 方法名：downloadPlugin<BR>  
-	 * 此方法描述的是：   下载插件
+	 *
+	 * The method name：downloadPlugin<BR>
+	 * This method describes   Download Plug-in
 	 * @param appId	appid
-	 * @param installType  安装类型
+	 * @param installType  Installation type
 	 */
 	private void downloadPlugin(String appId, int installType) {
 		Intent i = new Intent(context, UpdateService.class);
@@ -204,9 +205,9 @@ public abstract class PluginClient {
 		context.startService(i);
 	}
 	/**
-	 * 
-	 * 方法名：onDownload<BR>  
-	 * 此方法描述的是：  处理下载后的插件 
+	 *
+	 * The method name：onDownload<BR>
+	 * This method describes  Handling downloaded plug-ins
 	 * @param appId
 	 * @param versionInfo
 	 * @param installType
@@ -215,10 +216,11 @@ public abstract class PluginClient {
 	private void onDownload(String appId, PluginVersionInfo versionInfo
 			, int installType, boolean cache) {
 		File downloadStoragePath = context.getDir("download",
-				Context.MODE_PRIVATE);							//获取下载的插件的保存路径
+				Context.MODE_PRIVATE);							//Gets the saved path for the downloaded plug-in
 		File file = new File(downloadStoragePath, UpdateService.getFileName(versionInfo));
 		
-		if (isInstalled(appId)) {//插件以及安装，判断是否存在缓存，如果没有缓存，先卸载插件，然后再进行安装
+		if (isInstalled(appId)) {
+			//Plug in and install to determine if there is a cache. If there is no cache, uninstall the plug-in first, and then install
 			if (cache == false) {
 				uninstall(appId);
 				install(file.getAbsolutePath(), appId);
@@ -246,9 +248,9 @@ public abstract class PluginClient {
 		}
 	}
 	/**
-	 * 
-	 * 方法名：registerBroadcastReceiver<BR>  
-	 * 此方法描述的是：     注册广播
+	 *
+	 * The method name：registerBroadcastReceiver<BR>
+	 * This method describes    Registered broadcasting
 	 */
 	private void registerBroadcastReceiver() {
 		receiver = new MessageReceiver();
@@ -260,10 +262,9 @@ public abstract class PluginClient {
 	/**
 	 * 
 		 * @ClassName:MessageReceiver <BR>
-	     * @Describe：信息广播，处理插件更新动态<BR>
+	     * @Describe：Information broadcasting, processing plug-in update dynamics<BR>
 	     * @Author: Jekshow
-		 * @Extends：<BR>
-	     * @Version:1.0 
+	     * @Version:1.0
 	     * @date:2016-8-3 下午6:12:34
 	 */
 
@@ -283,7 +284,7 @@ public abstract class PluginClient {
 					String error = b.getString("error");
 					
 					if (success) {
-						//插件更新成功，加载插件
+						//The plug-in was updated successfully and loaded the plug-in
 						onDownload(appId, versionInfo, installType, cache);
 					} else {
 						if (listener != null) {

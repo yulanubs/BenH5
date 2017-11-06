@@ -36,7 +36,7 @@ public class UpdateService extends Service {
 	private Timer timer;
 	private static long period = 60 * 60 * 1000;
 	private static final long minPeriod = 10 * 60 * 1000;
-	/** 下载地址 */
+	/** Download address */
 	public File downloadStoragePath;
 
 	private Map<String, OfflineVersion> appMap = new HashMap<String, OfflineVersion>();
@@ -48,7 +48,6 @@ public class UpdateService extends Service {
 	public static final int installType_update = 0;
 	public static final int installType_install = 1;
 	public static final int installType_launch = 2;
-	/** 包名 */
 	public String packageName;
 	public TelephonyManager telephonyManager;
 
@@ -126,9 +125,9 @@ public class UpdateService extends Service {
 		}
 	}
 	/**
-	 * 
-	 * 方法名：registApp<BR>  
-	 * 此方法描述的是：  注册插件APP 
+	 *
+	 * The method name：registApp<BR>
+	 * This method describes  Register the plug-in APP
 	 * @param appId
 	 * @param version
 	 * @param file  void
@@ -157,9 +156,9 @@ public class UpdateService extends Service {
 	}
 
 	/**
-	 * 
-	 * 方法名：OfflineVersion<BR>
-	 * 此方法描述的是：获取版本
+	 *
+	 * The method name：getCache<BR>
+	 * This method describes：Get version
 	 * 
 	 * @param appId
 	 * @return OfflineVersion
@@ -303,9 +302,9 @@ public class UpdateService extends Service {
 	}
 
 	/**
-	 * 
-	 * 方法名：onComplete<BR>  
-	 * 此方法描述的是：   更新完成
+	 *
+	 * The method name：getCache<BR>
+	 * This method describes Update complete
 	 * @param appId
 	 * @param versionInfo
 	 * @param success
@@ -333,15 +332,14 @@ public class UpdateService extends Service {
 	}
 
 	/**
-	 * 
-	 * 方法名：onProgress<BR>
-	 * 此方法描述的是：进度信息
+	 *
+	 * The method name：onProgress<BR>
+	 * This method describes：Progress information
 	 * 
 	 * @param appId
 	 * @param percent
 	 * @param max
 	 * @param installType
-	 *            void
 	 */
 	public void onProgress(String appId, float percent, int max, int installType) {
 		Intent i = new Intent();

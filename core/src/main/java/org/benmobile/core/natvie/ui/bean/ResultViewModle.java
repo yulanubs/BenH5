@@ -9,25 +9,25 @@ import org.json.JSONObject;
  * @author unkown
  * @marker liukun@tomstaff.com
  * @since 2016-4-7
- * @category 响应结果基类
+ * @category
  */
 public class ResultViewModle implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	/** 结果码 **/
+	/** The result code **/
 	public String returnCode;
-	/** 结果描述 **/
+	/** The results described **/
 	public String returnMessage;
-	/** 结果描述 **/
+	/** The results described **/
 	public String returnMsg;
 	/** ? **/
 	public String workStatus;
 	/** ? **/
 	public String url;
-	/** 提交取消订单申请 h5 **/
+	/** Submit an application for cancellation of the order of h5**/
 	public String toHtml5URL;
-	/** 1：跳转H5；0：直接取消 **/
+	/** 1: jump H5; Zero: directly cance**/
 	public String isMerAuditFlag;
 
 	public ResultViewModle(JSONObject jsn) throws JSONException

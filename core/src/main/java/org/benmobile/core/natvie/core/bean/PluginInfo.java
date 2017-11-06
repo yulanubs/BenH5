@@ -35,28 +35,26 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 /**
- * 
- * @ClassName: PluginInfo<BR>
- * @Describe：插件信息实体类<BR>
- * @Author: Jekshow
- * @Extends：<BR>
- * @Version:1.0
- * @date:2016-8-3 下午5:21:30
+ *
+ * @ the ClassName: PluginInfo < BR >
+ * @ the Describe: plug-in information entity class < BR >
+ * @ Author: Jekshow
+ * @ Extends: < BR >
  */
 public class PluginInfo {
-	/** 包信息 */
+	/** Package information*/
 	public PackageInfo packageInfo;
-	/** 保存路径 */
+	/** Save the path*/
 	public String storagePath;
-	/** 插件加载器 */
+	/** Plug-in loader*/
 	public PluginClassLoader classLoader;
-	/** 资源管理器 */
+	/** The resource manager*/
 	public AssetManager assetManager;
-	/** 资源引用对象 */
+	/** The resource reference object*/
 	public Resources resources;
 	/** Application */
 	public Application application;
-	/** 包名 */
+	/** The package name */
 	public String packageName;
 
 	public String getPackageName() {
@@ -68,9 +66,9 @@ public class PluginInfo {
 	}
 
 	/**
-	 * 
-	 * 方法名：makeDir<BR>
-	 * 此方法描述的是： 创建文件夹
+	 *
+	 * the method name: makeDir < BR >
+	 * this method described is: create a folder
 	 * 
 	 * @param dirName
 	 * @return String
@@ -82,9 +80,9 @@ public class PluginInfo {
 	}
 
 	/**
-	 * 
-	 * 方法名：getMainActivityName<BR>
-	 * 此方法描述的是： 获取MainActivity名称
+	 *
+	 * the method name: getMainActivityName < BR >
+	 * this method describes: get MainActivity name
 	 * 
 	 * @return String
 	 */
@@ -96,9 +94,9 @@ public class PluginInfo {
 	}
 
 	/***
-	 * 
-	 * 方法名：findAcitivityInfo<BR>
-	 * 此方法描述的是： 根据activity名称获取Activity信息
+	 *
+	 * the method name: findAcitivityInfo < BR >
+	 * this method description is: according to the name of the activity for the activity information
 	 * 
 	 * @param name
 	 * @return ActivityInfo
@@ -121,9 +119,9 @@ public class PluginInfo {
 	}
 
 	/**
-	 * 
-	 * 方法名：initApplication<BR>
-	 * 此方法描述的是： 初始化Application
+	 *
+	 * the method name: initApplication < BR >
+	 * description of this method is that the initial Application
 	 * 
 	 * @param context
 	 */
@@ -136,7 +134,7 @@ public class PluginInfo {
 			appClassName = Application.class.getName();
 		}
 		try {
-			// 根据appClassName获取Application实例
+			// According to appClassName access Application instance
 			application = (Application) getClassLoader()
 					.loadClass(appClassName).newInstance();
 
@@ -152,9 +150,9 @@ public class PluginInfo {
 	}
 
 	/**
-	 * 
-	 * 方法名：getPluginDir<BR>
-	 * 此方法描述的是： 获取插件Dir
+	 *
+	 * the method name: getPluginDir < BR >
+	 * this method describes: get plugin Dir
 	 * 
 	 * @param storagePathBase
 	 * @param packageName
@@ -165,31 +163,33 @@ public class PluginInfo {
 	}
 
 	/**
-	 * 
-	 * 方法名：load<BR>
-	 * 此方法描述的是：加载apk
-	 * 
-	 * @param context
-	 *            上下文
-	 * @param storagePathBase
-	 *            存储路径
-	 * @param apkfilePath
-	 *            apk路径
-	 * @param packageName
-	 *            包名
-	 * @return boolean
+	 * the method name: load < BR >
+	 * description of this method is that the loading apk
+	 * @ param context
+	 * context
+	 * @ param storagePathBase
+	 * store path
+	 * @ param apkfilePath
+	 * apk path
+	 * @ param packageName
+	 * the package name
+	 * @ return Boolean
+
 	 */
 	public boolean load(Context context, String storagePathBase,
 			String apkfilePath, String packageName) {
 
 		File aokfile = new File(apkfilePath);
-		if (!aokfile.exists()) { // 判断文件是否存在
+		if (!aokfile.exists()) {
+			// To determine whether a file exists
 			SyknetPluginManager.log.e("file not found: " + apkfilePath);
 			return false;
 		}
 
-		PackageManager pm = context.getPackageManager(); // 获取包管理器
-		packageInfo = pm.getPackageArchiveInfo(apkfilePath, // 获取包信息
+		PackageManager pm = context.getPackageManager();
+		// To obtain a package manager
+		packageInfo = pm.getPackageArchiveInfo(apkfilePath,
+				// Package information
 				PackageManager.GET_ACTIVITIES | PackageManager.GET_RECEIVERS
 						| PackageManager.GET_PROVIDERS
 						| PackageManager.GET_META_DATA
@@ -208,59 +208,70 @@ public class PluginInfo {
 		storagePath = getPluginDir(storagePathBase, this.packageName);
 		String optimizedDirectory;
 		String nativeLibraryDir;
-		String dexfile = storagePath + "/p.apk"; // dex路径
+		// Dex path
+		String dexfile = storagePath + "/p.apk";
 
 		File file = new File(storagePath);
 		if (!file.exists()) {
 			file.mkdir();
-			optimizedDirectory = makeDir("olib");// 创建旧lib文件夹
-			nativeLibraryDir = makeDir("lib"); // 创建lib文件夹
+			// To create the old lib folder
+			optimizedDirectory = makeDir("olib");
+			// Create a lib folder
+			nativeLibraryDir = makeDir("lib");
 
 			try {
-				FileUtil.copyFile(apkfilePath, dexfile);// 拷贝dex
+				// Copy dex
+				FileUtil.copyFile(apkfilePath, dexfile);
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;
 			}
-			copyNativeLibs(context, dexfile, nativeLibraryDir);// 拷贝lib
+			//Copy the lib
+			copyNativeLibs(context, dexfile, nativeLibraryDir);
 		} else {
 			optimizedDirectory = storagePath + "/" + ("olib");
 			nativeLibraryDir = storagePath + "/" + ("lib");
 		}
-
+		// instantiate the plugin loader
 		classLoader = PluginClassLoader.make(dexfile, optimizedDirectory,
-				nativeLibraryDir, context.getClassLoader()); // 实例化插件加载器
-		classLoader.plugin = this; // 传入插件加载器所需的插件信息对象
-		loadAsset(context, dexfile);//加载资源
-
-		initApplication(context);//初始化Application
+				nativeLibraryDir, context.getClassLoader());
+		// Incoming plug-in plug-in information needed for the loader object
+		classLoader.plugin = this;
+		//Load resources
+		loadAsset(context, dexfile);
+		//Initializes the Application
+		initApplication(context);
 		return true;
 	}
 	/**
-	 * 
-	 * 方法名：loadAsset<BR>  
-	 * 此方法描述的是：   加载资源
+	 *
+	 * the method name: loadAsset < BR >
+	 * description of this method is that the load of resources
 	 * @param context
 	 * @param dexPath  void
 	 */
 	private void loadAsset(Context context, String dexPath) {
 		try {
-			AssetManager am = (AssetManager) AssetManager.class.newInstance();//实例化一个资源管理器对象
+			//Instantiate a resource manager object
+			AssetManager am = (AssetManager) AssetManager.class.newInstance();
 			am.getClass().getMethod("addAssetPath", String.class)
 					.invoke(am, dexPath);
-			assetManager = (am);//获取插件dex资源资源管理器
+			//Access to the plugin dex resources resource manager
+			assetManager = (am);
 			Resources ctxres = context.getResources();
 			PluginContext.PluginResources res = new PluginContext.PluginResources(
 					am, ctxres.getDisplayMetrics(), ctxres.getConfiguration());
-			res.old = ctxres;//替换插件资源文件对象
-			resources = res;//插件资源对象赋值给当前资源对象
+			//Replace the plug-in resource file object
+			res.old = ctxres;
+			//The plugin resources assigned to the current resource object
+			resources = res;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * 这段代码来自https://github.com/DroidPluginTeam/DroidPlugin
+	 * This code from https://github.com/DroidPluginTeam/DroidPlugin
 	 * 
 	 * @param context
 	 * @param apkfile

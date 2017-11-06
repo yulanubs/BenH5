@@ -11,16 +11,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * 类说明：  数值判断帮助类
+ * Class description: value judgment helper classes
  * @author  tianshuguang@tomstaff.com
  * @date    2014-7-25
  * @version 1.0
  */
 public class ValueUtils {
 	/**
-	 * 
-	 * 方法名：isString<BR>
-	 * 此方法描述的是：字符串；判空
+	 *
+	 * The method name：isNotNullString<BR>
+	 * This method describes：The string; Sentenced to empty
 	 * 
 	 * @param presentStationOrderId
 	 * @return boolean
@@ -32,7 +32,7 @@ public class ValueUtils {
 	}
 
 	/**
-	 * @description 判断List是否非空
+	 * @description To judge whether the List is not empty
 	 * @param noteList
 	 * @return boolean
 	 */
@@ -40,7 +40,7 @@ public class ValueUtils {
 		return null != noteList && noteList.size() > 0;
 	}
 	/**
-	 * @description 判断List是否为空
+	 * @description To judge whether the List is empty
 	 * @param noteList
 	 * @return boolean
 	 */
@@ -48,7 +48,7 @@ public class ValueUtils {
 		return null == noteList || noteList.size() == 0;
 	}
 	/**
-	 * @description 判断String字符串是否为空
+	 * @description To determine whether a String String is empty
 	 * @param value
 	 * @return boolean
 	 */
@@ -59,7 +59,7 @@ public class ValueUtils {
 		return false;
 	}
 	/**
-	 * @description 判断String字符串是否非空
+	 * @description To determine whether a String String is not empty
 	 * @param value
 	 * @return boolean
 	 */
@@ -67,7 +67,7 @@ public class ValueUtils {
 		return !isStrEmpty(value);
 	}
 	/**
-	 * @description 判断对象是否非空
+	 * @description To judge whether the object is not empty
 	 * @param object
 	 * @return boolean
 	 */
@@ -75,7 +75,7 @@ public class ValueUtils {
 		return null != object;
 	}
 	/**
-	 * @description 判断对象是否非空
+	 * @description To judge whether the object is not empty
 	 * @param object
 	 * @return boolean
 	 */
@@ -84,14 +84,14 @@ public class ValueUtils {
 	}
 
 	/**
-	 * 判断在多个EditText或者TextView的内容中有一个为空就返回true
+	 *In the content of judgment in multiple EditText or TextView have a null return true
 	 * 
 	 * @param views
 	 * @return
 	 */
 	public static boolean isHasEmptyView(View... views) {
 		for (View v : views) {
-			if (!v.isShown()) {// 不可见的不做判断
+			if (!v.isShown()) {// Not visible do not judge
 				continue;
 			}
 			if (v instanceof EditText) {
@@ -110,7 +110,7 @@ public class ValueUtils {
 	}
 	
 	/**
-	 * 将boolean true变成"1" false变成"0"
+	 *The Boolean true into "1" false into "0"
 	 * 
 	 * @param b
 	 * @return
@@ -121,7 +121,7 @@ public class ValueUtils {
 	
 
 	public static boolean isChinese(String str) throws PatternSyntaxException {
-		/**此正则表达式来进行判断输入是否为中文**/
+		/**The regular expression to determine whether the input into Chinese*/
 		String regEx = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
 		Pattern p = Pattern.compile(regEx);
 		Matcher matcher = p.matcher(str);  
@@ -129,8 +129,8 @@ public class ValueUtils {
 	}
 	
 	/**
-	 * 精确到百分位，小数点后不足补零。
-	 * 	例如：20>20.00, 21.1111>21.11, 21.55555>21.56
+	 * Accurate to percentile, decimal places less than zero.
+	 * 	For example: 20 > 20.00, 21.1111 > 21.11, 21.55555 > 21.56
 	 */
 	public static String format2Percentile(String number) {
 		String strFormat = "%,.2f";
@@ -151,14 +151,14 @@ public class ValueUtils {
 	}
 	
 	/**
-	 * 精确到百分位，小数点后不足补零。
-	 * 	例如：20>20.00, 21.1111>21.11, 21.55555>21.56
+	 * Accurate to percentile, decimal places less than zero.
+	 * 	For example: 20 > 20.00, 21.1111 > 21.11, 21.55555 > 21.56
 	 */
 	public static String format2Percentile(double number) {
 		return format2Percentile(Double.toString(number));
 	}
 	/**
-	 * upc格式 加空格
+	 * Upc format to add Spaces
 	 */
 	public static String formatUpc(String upc) {
 		StringBuffer buffer = new StringBuffer();

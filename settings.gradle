@@ -1,1 +1,1 @@
-include ':app', ':benh5-v2', ':analysis', ':bentools', ':core', ':protocol'
+include ':app', ':benh5-v2', ':analysis', ':core', ':protocol', ':benh5rad'

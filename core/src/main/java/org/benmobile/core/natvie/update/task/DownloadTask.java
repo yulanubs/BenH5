@@ -85,7 +85,7 @@ public class DownloadTask {
 		String urlStr = getHost() + PluginConfig.CHECK_UPDATEAPPPLUGIN+"?appid="+PluginConfig.APP_ID+"&flageType="+getFlageType()+"&pluginId=3&appProject="+appId;
 //		String urlStr =  "http://api.syknet.cn/SykNetApi/AppPlugin/CheckUpdate.do?appkey=2xV107Po78T9fdi96Ryoq5Su2LunJ8L1&appId=1001&flageType="+getFlageType()+"&pluginId=2"+"&appProject="+appId;
 		String text = httpClient.get(urlStr);
-		/**版本信息*/
+		/**Version information*/
 		PluginVersionInfo versionInfo = null;
 		if (ValueUtils.isStrEmpty(text)){
 			return;
@@ -93,15 +93,15 @@ public class DownloadTask {
 		PluginClient.log.d(urlStr);
 		PluginClient.log.d(text);
 
-		/**插件解析版本更新*/
+		/**Plug-in version update*/
 		PluginVersionInfoList mPluginVersionInfoList=new PluginVersionInfoList(new JSONObject(text));
 
 		if (mPluginVersionInfoList == null||ValueUtils.isListEmpty(mPluginVersionInfoList.mPluginVersionInfoList))
 			return;
-		/**默认根据插件特殊编码查询，字典只返回一条记录，所以去字典下标为0的数据*/
+		/**The default according to special code query, plug-in dictionary only return a record, so data to dictionary index of 0*/
 		versionInfo=mPluginVersionInfoList.mPluginVersionInfoList.get(0);
 		if (ValueUtils.isEmpty(versionInfo)){
-			//如果插件跟新数据为空，程序结束运行
+			//If the plug-in with the new data is empty, the end run
 			return;
 		}
 		PluginClient.log.d(versionInfo.toString());
@@ -215,7 +215,7 @@ public class DownloadTask {
 //				+ "&did=" + getImei() + "&pkg=" + getPackageName();
 		String url = versionInfo.fileUrl;
 		if (ValueUtils.isStrNotEmpty(url)) {
-			//判断插件下载地址是否为空
+			//To judge whether the plug-in download address is empty
 			httpClient.doRequest(url, "GET", handler);
 		}else{
 			PluginClient.log.w("plugin_fileUrl" + "--error" );	

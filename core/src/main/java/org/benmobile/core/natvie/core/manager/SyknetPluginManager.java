@@ -31,19 +31,17 @@ import org.benmobile.core.natvie.utils.Reflection;
 /**
  * 
 	 * @ClassName:AxPluginManager <BR>
-     * @Describe：用于管理插件的加载等<BR>
+     * @Describe：Used to manage the plugin<BR>
      * @Author: Jekshow
-	 * @Extends：<BR>
-     * @Version:1.0 
+     * @Version:1.0
      * @date:2016-8-3 下午4:15:19
  */
 public class SyknetPluginManager {
 	public static final SLogger log = SLogger.get("Syknet.plugin");
-	/**插件的包名*/
+	/**The plug-in package name*/
 	public final static String intentPackageName = "plugin_package";
-	/**插件的类名*/
+	/**The class name of the plugin*/
 	public final static String intentClassName = "plugin_class";
-	/**上下文*/
 	private Context context;
 	/***/
 	private SyknetInstrumentation instrumentation;
@@ -77,7 +75,7 @@ public class SyknetPluginManager {
 			storagePath = context.getDir("plugins", Context.MODE_PRIVATE)
 					.getAbsolutePath();
 			FileUtil.ensureDir(storagePath);
-			//初始化插件类加载器
+			//Initialize the plug-in class loader
 			injectorClassLoader();
 
 			loadAllFiles();
@@ -97,26 +95,25 @@ public class SyknetPluginManager {
 			instrumentation.old = (Instrumentation) old;
 		}
 	}
+
 	/**
-	 * 
-	 * 方法名：injectorClassLoader<BR>  
-	 * 此方法描述的是：   替换android默认的类加载器
+	 * Replace the android default class loader
 	 */
 	void injectorClassLoader() {
-		//获取包名
+		//To get the package name
 		String pkgName = context.getPackageName();
-		//获取上下文
+		//To get the context
 		Context contextImpl = ((ContextWrapper) context).getBaseContext();
-		//获取Activity主线程
+		//Access to the Activity of the main thread
 		Object activityThread = Reflection.getField(contextImpl, "mMainThread");
-		//获得包容器
+		//Get package container
 		Map mPackages = (Map) Reflection.getField(activityThread, "mPackages");
-		//获取弱引用对象，规范反射
+		//To obtain a weak reference object, the standard reflection
 		WeakReference weakReference = (WeakReference) mPackages.get(pkgName);
 		if (weakReference == null) {
 			log.e("loadedApk is null");
 		} else {
-			//获取需要加载的apk
+			//Get apk need to be loaded
 			Object loadedApk = weakReference.get();
 			
 			if (loadedApk == null) {
@@ -124,19 +121,19 @@ public class SyknetPluginManager {
 				return;
 			}
 			if (appClassLoader == null) {
-				//获取原有的类加载器
+				//Access to the original class loader
 				ClassLoader old = (ClassLoader) Reflection.getField(loadedApk,
 						"mClassLoader");
-				//根据默认的类加载器实例化一个插件的类加载器
+				//According to the default class loader instantiate a plug-in class loader
 				appClassLoader = new SyknetAppClassLoader(old, this);
 			}
-			//将新的插件加载器替换掉默认加载器
+			//Replace the new plug-in loader loader by default
 			Reflection.setField(loadedApk, "mClassLoader", appClassLoader);
 		}
 	}
 
 	public PluginInfo load(String apkfile, String packageName) {
-		//实例化一个插件信息类
+		//Instantiate a plug-in class information
 		PluginInfo pluginInfo = new PluginInfo();
 
 		try {
@@ -151,7 +148,8 @@ public class SyknetPluginManager {
 		}
 
 		synchronized(this) {
-			pluginInfoMap.put(pluginInfo.getPackageName(), pluginInfo);//将插件信息对象添加到插件容器中
+			//Will object information added to the plugin's container
+			pluginInfoMap.put(pluginInfo.getPackageName(), pluginInfo);
 		}
 		return pluginInfo;
 	}
@@ -233,9 +231,8 @@ public class SyknetPluginManager {
 		}
 	}
 	/**
-	 * 
-	 * 方法名：loadAllFiles<BR>  
-	 * 此方法描述的是：加载所有文件
+	 *
+	 All files: load
 	 */
 	public void loadAllFiles() {
 		File dir = new File(storagePath);

@@ -54,19 +54,19 @@ public class PluginListener {
 	}
 
 	public void onUpdate(String id, String whatsNew) {
-		String title = getApplicationName() + "已更新,应用需要重启";
-		String msg = whatsNew + "\n(Powered by Syknet插件系统)";
+		String title = getApplicationName() + "The updated, need to restart the application";
+		String msg = whatsNew + "\n(Powered by Syknet Plug-in system)";
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(context)
 				.setTitle(title).setMessage(msg).setCancelable(false)
-				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				.setPositiveButton("determine", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						restartApp();
 					}
 				});
 		if (PluginClient.config.forceRestart == false) {
-			builder.setNegativeButton("取消", null);
+			builder.setNegativeButton("cancel", null);
 		}
 		AlertDialog alert = builder.create();
 		alert.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
@@ -90,7 +90,7 @@ public class PluginListener {
 						.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 				progressDialog.setIndeterminate(false);
 				progressDialog.setTitle("Downloading");
-				progressDialog.setMessage("正在下载,请稍候！");
+				progressDialog.setMessage("s downloading, please wait!");
 				progressDialog.setMax(max);
 				progressDialog.show();
 			}
