@@ -53,4 +53,16 @@ public class MBLogClick extends BaseDatabaseObj {
 		return LogDatabaseHelper.TABLE_MB_LOG_CLICK;
 	}
 
+	@Override
+	public String toString() {
+		return "MBLogClick{" +
+				"createTime='" + createTime + '\'' +
+				", params='" + params + '\'' +
+				", moduleId='" + moduleId + '\'' +
+				", moduleDesc='" + moduleDesc + '\'' +
+				", network='" + network + '\'' +
+				", networkDetail='" + networkDetail + '\'' +
+				", appkey='" + appkey + '\'' +
+				'}';
+	}
 }

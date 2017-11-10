@@ -7,18 +7,10 @@ public class SignEncException extends Exception {
 	public SignEncException(){
     }
 
-    /**
-     *
-     * @param s
-     */
     public SignEncException(String s){
         super(s);
     }
 
-    /**
-     *
-     * @param p0
-     */
     public SignEncException(Throwable p0){
     }
 }

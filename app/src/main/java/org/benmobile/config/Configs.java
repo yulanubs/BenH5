@@ -25,6 +25,7 @@ public class Configs {
      * 版本更新key
      */
     public String UPDATE_KEY;
+    public String ANALYSIS;
     /**
      * 客户端名称
      */
@@ -37,4 +38,6 @@ public class Configs {
      * 缓存路径
      */
     public static String BenH5_CACHE_PATH = "/BenH5/Cache";
+
+
 }

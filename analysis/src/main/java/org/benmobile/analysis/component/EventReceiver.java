@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
-import org.benmobile.analysis.tools.Logger;
 
 public class EventReceiver extends BroadcastReceiver {
 
@@ -25,7 +25,6 @@ public class EventReceiver extends BroadcastReceiver {
 		}else if(intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)){
 			networkChange(context);
 		}
-		Logger.info("EventReceiver", intent.getAction());
 	}
 	
 	private void getTime(Context context){
@@ -36,6 +35,7 @@ public class EventReceiver extends BroadcastReceiver {
 	private void upload(Context context){
 		Intent startService = new Intent(context, UploadLogService.class);
 		context.startService(startService);
+		Log.e("UploadLogService","UploadLogService");
 	}
 	
 	private void networkChange(Context context){

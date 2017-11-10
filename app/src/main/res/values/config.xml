@@ -10,4 +10,5 @@
     <string name="SERVER_PRD_BENH5_VPS">http://benh5api.ktchain.org</string>
     <string name="SERVER_PRD_BENH5_ALTERNATE_VPS">http://benh5api.ktchain.org</string>
     <string name="UPDATE_KEY">benh5_android_update</string>
+    <string name="ANALYSIS">http://182.254.241.141</string>
 </resources>

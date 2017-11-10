@@ -1,18 +1,14 @@
 package org.benmobile.analysis.task;
 
 import android.os.Handler;
+import android.util.Log;
 
 import org.benmobile.analysis.MobileLogConsts;
 import org.benmobile.analysis.SyknetMobileLog;
 import org.benmobile.analysis.database.LogDatabaseHelper;
 import org.benmobile.analysis.database.obj.BaseDatabaseObj;
-import org.benmobile.analysis.database.obj.MBLogAction;
-import org.benmobile.analysis.database.obj.MBLogClick;
 import org.benmobile.analysis.database.obj.MBLogCrash;
-import org.benmobile.analysis.database.obj.MBLogLaunch;
-import org.benmobile.analysis.database.obj.MBLogOperate;
 import org.benmobile.analysis.http.HttpEntity;
-import org.benmobile.analysis.tools.Logger;
 import org.benmobile.analysis.tools.ValueUtils;
 
 import org.json.JSONArray;
@@ -43,7 +39,9 @@ public class UploadCrashTask extends BaseTask {
 		HttpEntity entity = new HttpEntity(MobileLogConsts.UPLOAD_LOG_URL);
 		Map<String, String> params = new HashMap<String, String>();
 		String data = loadLogFromDatabase();
-		Logger.info("UploadCrashTask", "data: "+data);
+		if (SyknetMobileLog.DEBUG){
+			Log.e("UploadCrashTask", "data: "+data);
+		}
 //		try {
 //			@SuppressWarnings("unused")
 //			JSONObject temp = new JSONObject(data);
@@ -83,7 +81,11 @@ public class UploadCrashTask extends BaseTask {
 		}
 		params.put("log", log);
 		boolean ret = entity.run(params);
-		String time = entity.getResult();
+		String result = entity.getResult();
+		if (ValueUtils.isStrNotEmpty(result))
+		{
+			resultShow(result);
+		}
 		if (ret){
 			deleteLogs();
 		}
@@ -103,7 +105,6 @@ public class UploadCrashTask extends BaseTask {
 				return log.toString();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
-				Logger.exception(e);
 				return "";
 			}
 			

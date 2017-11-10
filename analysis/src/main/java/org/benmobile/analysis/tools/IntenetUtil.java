@@ -25,10 +25,6 @@ public class IntenetUtil {
     private static String NETWORK_DETAIL = TYPE_NO;
     private static String NETWORK = "";
 
-    /**
-     *
-     * @param context
-     */
     public static void updateNetwork(Context context){
         int networkState = getNetworkState(context);
         if (networkState==1&&networkState!=5){
@@ -42,7 +38,6 @@ public class IntenetUtil {
         }
 
     }
-
     /**
      *
      * @param context

@@ -3,21 +3,20 @@ package org.benmobile.analysis.task;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.benmobile.analysis.tools.ValueUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import org.benmobile.analysis.MobileLogConsts;
 import org.benmobile.analysis.SyknetMobileLog;
-import org.benmobile.analysis.database.LogDatabaseHelper;
 import org.benmobile.analysis.database.obj.MBLogDevice;
 import org.benmobile.analysis.http.HttpEntity;
-import org.benmobile.analysis.secret.DESSecret;
 import org.benmobile.analysis.time.CurrentTimeProvider;
-import org.benmobile.analysis.tools.Logger;
 
 public class UpLoadDeviceTask extends BaseTask {
 
@@ -54,7 +53,6 @@ public class UpLoadDeviceTask extends BaseTask {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			Logger.exception(e);
 			success = false;
 		}
 		if (!success || now == null || now.equals("")) {
@@ -78,10 +76,11 @@ public class UpLoadDeviceTask extends BaseTask {
 			main.put("MB_LOG_DEVICE", ja);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 		}
 		String data = main.toString();
-		Logger.info("UpLoadDeviceTask", "data: " + data);
+		if (SyknetMobileLog.DEBUG){
+			Log.e("UpLoadDeviceTask", "data: "+data);
+		}
 		if (data.equals("")) {
 			sendResult(BaseTask.TASK_UPLOAD_DEVICE_FINISH, "");
 			return;
@@ -113,11 +112,13 @@ public class UpLoadDeviceTask extends BaseTask {
 		}
 		params.put("log", log);
 		boolean ret = entity.run(params);
-		Logger.info("UpLoadDeviceTask", "success: " + ret);
 		sendResult(BaseTask.TASK_UPLOAD_DEVICE_FINISH, ret);
 
 		String result = entity.getResult();
-		Logger.info("UpLoadDeviceTask", "result: "+result);
+		if (ValueUtils.isStrNotEmpty(result))
+		{
+			resultShow(result);
+		}
 		try {
 			JSONObject jsonResult = new JSONObject(result);
 			String code = jsonResult.getString("returnCode");
@@ -127,7 +128,6 @@ public class UpLoadDeviceTask extends BaseTask {
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 		}
 		if (ret){
 

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 
 import org.benmobile.BuildConfig;
 import org.benmobile.R;
+import org.benmobile.analysis.SyknetMobileLog;
 import org.benmobile.config.Configs;
 import org.benmobile.config.ConstData;
 import org.benmobile.coolhttp.http.CoolHttp;
@@ -53,6 +54,12 @@ public class BenH5Application extends Application {
     public static final String UUID = "UUID";
     /**AppKey*/
     public   static String appkey = "2xV107Po78T9fdi96Ryoq5Su2LunJ8L2";
+    /**servicekey*/
+    public   static String servicekey = "2xV107Po78T9fdi96Ryoq5Su2LunJ8L2";
+
+
+    public final static String password = "6fd4b7f4"; // 密钥
+    public final static byte[] iv = {13, 8, 3, 16, 23, 6, 11, 5}; // 向量
     @Override
     public void onCreate() {
         super.onCreate();
@@ -100,7 +107,9 @@ public class BenH5Application extends Application {
      * 初始化手机日志
      */
     private void initMobileLog() {
-
+        SyknetMobileLog.init(this, getSessionID(), configs.marketId,
+                String.valueOf(packageinfo.versionCode), configs.ClientName, "android",
+                appkey, configs.ANALYSIS, servicekey, password, iv);
     }
 
     private void initAPPInfo() {
@@ -276,7 +285,8 @@ public class BenH5Application extends Application {
             }
 
             configs.UPDATE_KEY = this.getResources().getString(R.string.UPDATE_KEY);
-
+            configs.ANALYSIS = this.getResources()
+                    .getString(R.string.ANALYSIS).trim();
 
         }
 

@@ -1,13 +1,19 @@
 package org.benmobile.analysis;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import org.benmobile.analysis.action.ActionMachine;
 import org.benmobile.analysis.component.EventReceiver;
@@ -25,9 +31,10 @@ import org.benmobile.analysis.tools.IntenetUtil;
 
 public class SyknetMobileLog {
 
+	private static final int REQUEST_READ_PHONE_STATE = 0x100;
 	public static LogDatabaseHelper mainDatabaseHelper;
 
-	public static boolean DEBUG = false;
+	public static boolean DEBUG = true;
 
 	public static void init(Application context, String device_id,
 			String market_id, String version, String client_type,
@@ -48,16 +55,16 @@ public class SyknetMobileLog {
 
 	}
 
-	public static void onDevice(Context context, String user_id,
+	public static void onDevice(Activity context, String user_id,
 			String push_device_token, String old_version, String lat_lon,
 			String uuid) {
 		onDevice(context, user_id, push_device_token, old_version, lat_lon,
 				uuid, null, false);
 	}
 
-	public static void onDevice(Context context, String user_id,
-			String push_device_token, String old_version, String lat_lon,
-			String uuid, Handler handler, boolean passive) {
+	public static void onDevice(Activity context, String user_id,
+								String push_device_token, String old_version, String lat_lon,
+								String uuid, Handler handler, boolean passive) {
 		boolean deviceSuccess = context.getSharedPreferences(
 				MobileLogConsts.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
 				.getBoolean(MobileLogConsts.DEVICE_SUCCESS, false);
@@ -70,9 +77,9 @@ public class SyknetMobileLog {
 
 		TelephonyManager tm = (TelephonyManager) context
 				.getSystemService(Context.TELEPHONY_SERVICE);
-		String imei = tm.getDeviceId();
-		String imsi = tm.getSubscriberId();
 
+		String	imei = tm.getDeviceId();
+		String imsi = tm.getSubscriberId();
 		String os = android.os.Build.VERSION.RELEASE;
 		String model = android.os.Build.MODEL;
 		String brand = android.os.Build.BRAND;
@@ -87,7 +94,7 @@ public class SyknetMobileLog {
 		int h = context.getResources().getDisplayMetrics().heightPixels;
 		String resolution = w + "*" + h;
 
-		WifiManager wm = (WifiManager) context
+		WifiManager wm = (WifiManager) context.getApplicationContext()
 				.getSystemService(Context.WIFI_SERVICE);
 		WifiInfo wi = wm.getConnectionInfo();
 		String mac = "";
@@ -106,6 +113,13 @@ public class SyknetMobileLog {
 		TaskExecutor.INSTANCE.execute(task);
 	}
 
+	/**
+	 * 启动页面必须调用，否则不会注册广播
+	 * @param context
+	 * @param user_id
+	 * @param push_device_token
+     * @param lat_lon
+     */
 	public static void onLaunch(Context context, String user_id,
 			String push_device_token, String lat_lon) {
 		IntenetUtil.updateNetwork(context);
@@ -146,7 +160,9 @@ public class SyknetMobileLog {
 		}
 		MBLogClick data = new MBLogClick(user_id, p, module_id, module_desc,
 				context);
-
+			if (SyknetMobileLog.DEBUG){
+				Log.e("MBLogClick",data.toString());
+			}
 		InsertDatabaseTask task = new InsertDatabaseTask(null, data);
 		TaskExecutor.INSTANCE.execute(task);
 		/*

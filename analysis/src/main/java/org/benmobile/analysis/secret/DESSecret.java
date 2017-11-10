@@ -8,17 +8,9 @@ import javax.crypto.spec.SecretKeySpec;
 
 import android.util.Base64;
 
-import org.benmobile.analysis.tools.Logger;
 
 public class DESSecret {
-	/**
-	 *
-	 * @param encryptString
-	 * @param encryptKey
-	 * @param iv
-	 * @return
-	 * @throws Exception
-	 */
+
 	public static String encryptDES(String encryptString, String encryptKey,byte[] iv)
 			throws Exception {
 		IvParameterSpec zeroIv = new IvParameterSpec(iv);
@@ -29,7 +21,6 @@ public class DESSecret {
 		byte[] encryptedData = cipher.doFinal(encryptString.getBytes("UTF-8"));
 		String temp = Base64.encodeToString(encryptedData, Base64.DEFAULT);
 		String secret = URLEncoder.encode(URLEncoder.encode(temp));
-		Logger.debug("DESSecret", "secret is:"+secret);
 		return secret;
 	}
 }

@@ -18,7 +18,6 @@ import android.util.Log;
 import org.benmobile.analysis.MobileLogConsts;
 import org.benmobile.analysis.secret.SignEnc;
 import org.benmobile.analysis.secret.SignEncException;
-import org.benmobile.analysis.tools.Logger;
 
 public class HttpEntity {
 
@@ -51,7 +50,6 @@ public class HttpEntity {
 		if (result == null){
 			return false;
 		}
-		Logger.debug("HttpEntity", "result: "+result);
 		return true;
 	}
 	
@@ -68,11 +66,9 @@ public class HttpEntity {
 			return conn;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 			return null;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 			return null;
 		}
 	}
@@ -84,7 +80,6 @@ public class HttpEntity {
 			conn.setRequestMethod("POST");
 		} catch (ProtocolException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 		}
 		conn.setUseCaches(false);
 		
@@ -120,7 +115,6 @@ public class HttpEntity {
 				p = sb.substring(1);
 			}
 			
-			Logger.debug("HttpEntity", "Entity: "+p);
 			data = p.getBytes("UTF-8");
 			String temp = new String(data);
 			if (!temp.equals(p)){
@@ -128,19 +122,15 @@ public class HttpEntity {
 			}
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 		}
 		return data;
 	}
 	
 	public static String sign(String params){
-		Logger.info("HttpEntity sign", "params: "+params);
-		Logger.info("HttpEntity sign", "appSercet: "+MobileLogConsts.appSercet);
 		try {
 			return SignEnc.sign(params, MobileLogConsts.appSercet);
 		} catch (SignEncException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 		}
 		return "";
 	}
@@ -156,7 +146,6 @@ public class HttpEntity {
 			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 			return false;
 		}finally{
 			if (os != null){
@@ -188,7 +177,6 @@ public class HttpEntity {
 			return sb.toString();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Logger.exception(e);
 			return null;
 		}
 		

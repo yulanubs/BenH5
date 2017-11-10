@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 
 import org.benmobile.analysis.PolicyContrl;
 import org.benmobile.analysis.task.BaseTask;
@@ -14,7 +15,6 @@ import org.benmobile.analysis.task.UploadClickTask;
 import org.benmobile.analysis.task.UploadCrashTask;
 import org.benmobile.analysis.task.UploadLaunchTask;
 import org.benmobile.analysis.task.UploadOperateTask;
-import org.benmobile.analysis.tools.Logger;
 
 public class UploadLogService extends Service {
 
@@ -27,13 +27,11 @@ public class UploadLogService extends Service {
 			// TODO Auto-generated method stub
 			switch (msg.what) {
 			case BaseTask.TASK_UPLOAD_LOG_SUCCESS:
-				Logger.debug("UploadLogService", "TASK_UPLOAD_LOG_SUCCESS");
 				stopSelf();
 				break;
 
 			case BaseTask.TASK_UPLOAD_LOG_EMPTY:
 				PolicyContrl.INSTANCE.unregisterAlarmManager(getApplicationContext());
-				Logger.debug("UploadLogService", "TASK_UPLOAD_LOG_EMPTY");
 				stopSelf();
 				break;
 			}
@@ -50,7 +48,7 @@ public class UploadLogService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TODO Auto-generated method stub
-		Logger.debug("UploadLogService", "onStartCommand isActived: "+isActived);
+		Log.e("UploadLogService", "onStartCommand isActived: "+isActived);
 		if (isActived){
 			
 		}else{

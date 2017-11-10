@@ -13,7 +13,6 @@ import android.os.Handler;
 import org.benmobile.analysis.MobileLogConsts;
 import org.benmobile.analysis.http.HttpEntity;
 import org.benmobile.analysis.time.CurrentTimeProvider;
-import org.benmobile.analysis.tools.Logger;
 
 public class GetTimeTask extends BaseTask {
 
@@ -46,7 +45,6 @@ public class GetTimeTask extends BaseTask {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			Logger.exception(e);
 			success = false;
 		}
 		

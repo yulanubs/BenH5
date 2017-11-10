@@ -10,7 +10,6 @@ import org.benmobile.analysis.task.BaseTask;
 import org.benmobile.analysis.task.GetTimeTask;
 import org.benmobile.analysis.task.TaskExecutor;
 import org.benmobile.analysis.time.CurrentTimeProvider;
-import org.benmobile.analysis.tools.Logger;
 
 public class TimeService extends Service {
 
@@ -45,7 +44,6 @@ public class TimeService extends Service {
 		// TODO Auto-generated method stub
 		GetTimeTask t = new GetTimeTask(h);
 		TaskExecutor.INSTANCE.execute(t);
-		Logger.debug("TimeService", "onStartCommand");
 		return super.onStartCommand(intent, flags, startId);
 	}
 

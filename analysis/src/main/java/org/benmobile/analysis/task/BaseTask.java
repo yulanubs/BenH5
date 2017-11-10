@@ -1,6 +1,9 @@
 package org.benmobile.analysis.task;
 
 import android.os.Handler;
+import android.util.Log;
+
+import org.benmobile.analysis.SyknetMobileLog;
 
 public abstract class BaseTask implements Runnable {
 
@@ -30,6 +33,11 @@ public abstract class BaseTask implements Runnable {
 	protected void sendResult(int msg_id,Object result){
 		if (mh != null){
 			mh.obtainMessage(msg_id,result).sendToTarget();
+		}
+	}
+	protected void resultShow(String result){
+		if (SyknetMobileLog.DEBUG){
+			Log.d("result", "result: "+result);
 		}
 	}
 }

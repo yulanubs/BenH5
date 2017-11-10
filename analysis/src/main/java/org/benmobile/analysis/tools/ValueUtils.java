@@ -8,27 +8,22 @@ import java.util.regex.PatternSyntaxException;
 public class ValueUtils {
 
 	/**
-	 *
 	 * @param noteList
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isListNotEmpty(List<?> noteList) {
 		return null != noteList && noteList.size() > 0;
 	}
-
 	/**
-	 *
 	 * @param noteList
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isListEmpty(List<?> noteList) {
 		return null == noteList || noteList.size() == 0;
 	}
-
 	/**
-	 *
 	 * @param value
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isStrEmpty(String value) {
 		if (null == value || "".equals(value.trim())) {
@@ -36,11 +31,9 @@ public class ValueUtils {
 		} 
 		return false;
 	}
-
 	/**
-	 *
 	 * @param value
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isStrNotEmpty(String value) {
 		return !isStrEmpty(value);
@@ -52,17 +45,15 @@ public class ValueUtils {
 	public static boolean isNotEmpty(Object object) {
 		return null != object;
 	}
-
 	/**
-	 *
 	 * @param object
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isEmpty(Object object) {
 		return null == object;
 	}
 
-
+	
 	/**
 	 *
 	 * @param b
@@ -71,24 +62,17 @@ public class ValueUtils {
 	public static String bolean2String(boolean b) {
 		return b ? "1" : "0";
 	}
+	
 
-	/**
-	 *
-	 * @param str
-	 * @return
-	 * @throws PatternSyntaxException
-	 */
 	public static boolean isChinese(String str) throws PatternSyntaxException {
 		String regEx = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
 		Pattern p = Pattern.compile(regEx);
 		Matcher matcher = p.matcher(str);  
 		return matcher.matches();
 	}
-
+	
 	/**
 	 *
-	 * @param number
-	 * @return
 	 */
 	public static String format2Percentile(String number) {
 		String strFormat = "%,.2f";
@@ -107,20 +91,14 @@ public class ValueUtils {
 		}
 		return String.format(strFormat, doubleMoney);
 	}
-
+	
 	/**
 	 *
-	 * @param number
-	 * @return
 	 */
 	public static String format2Percentile(double number) {
 		return format2Percentile(Double.toString(number));
 	}
-
 	/**
-	 *
-	 * @param upc
-	 * @return
 	 */
 	public static String formatUpc(String upc) {
 		StringBuffer buffer = new StringBuffer();

@@ -63,9 +63,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //    compile 'org.benmobile.benh5_v2.library:benh5-v2:0.0.1'
 //    compile 'org.benmobile.bentools.library:bentools:0.0.7'
-    compile 'org.benmobile.analysis.library:analysis:0.0.3'
+//    compile 'org.benmobile.analysis.library:analysis:0.0.6'
     compile project(':core')
     compile project(':protocol')
+    compile project(':analysis')
 }
 
 task javadoc(type: Javadoc) {

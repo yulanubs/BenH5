@@ -2,7 +2,6 @@ package org.benmobile.analysis.secret;
 
 import java.util.Vector;
 
-import org.benmobile.analysis.tools.Logger;
 import org.benmobile.analysis.tools.StringHelper;
 
 public class SignEnc {
@@ -16,33 +15,28 @@ public class SignEnc {
 	public static final String VERIFY_ERROR = "verify error!";
 	public static final String SECRETTYPE = "0";
 	/**
-	 *
 	 */
 	public static final String[]SIGN_TYPE = new String[]{"1","2" };
-
-
+	
+	
 	/**
-	 *
 	 * @param params
 	 * @param secret
-	 * @return
-	 * @throws SignEncException
+	 * @throws Exception 
 	 */
 	public static String sign(String params, String secret) throws SignEncException {
 		String result = null;
-		Logger.info("SignEnc", "params: "+params);
-		result = hmacSign(params,secret);		
+		result = hmacSign(params,secret);
 		
 		return result;
 	}
-
+	
+	
 
 	/**
-	 *
+	 * hmac
 	 * @param params
-	 * @param secret
-	 * @return
-	 * @throws SignEncException
+	 * @param secret APP_SECRET
 	 */
 	public static String hmacSign(String params, String secret) throws SignEncException {
 		String result = null;
@@ -58,9 +52,9 @@ public class SignEnc {
 		}
 		return result;
 	}
-
+	
 	/**
-	 *
+	 * HMAC
 	 * @param data
 	 * @param key
 	 * @param characterCodeType
@@ -70,13 +64,11 @@ public class SignEnc {
 		byte[] b = HMACSHA1.getHmacSHA1(data, key);
 		return b;
 	}
-
 	/**
 	 *
-	 * @param params
+	 * @param params  
 	 * @param orgin
 	 * @return
-	 * @throws Exception
 	 */
 	private static StringBuffer getBeforeSign(String params, StringBuffer orgin) throws Exception {
 		try{
@@ -103,9 +95,10 @@ public class SignEnc {
 		}
 		return orgin;
 	}
-
+	
+	
 	/**
-	 *
+	 * test only!!!!!!
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -121,7 +114,6 @@ public class SignEnc {
 			sign(data,key);
 			//sign("userID=663&orderId=100031622&payPwd=123123&payType=2","bff6c876dbda4ea49ec9df557ac7a197");
 		} catch (Exception e) {
-			Logger.exception(e);
 		}
 	}
 	
