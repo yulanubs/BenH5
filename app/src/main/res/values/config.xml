@@ -2,13 +2,13 @@
 <resources>
     <string name="marketId">000</string>
     <!-- push server -->
-    <string name="SERVER_BENH5_PUSH">http://benh5api.ktchain.org</string>
+    <string name="SERVER_BENH5_PUSH">http://192.168.113.149:8080/BenH5ApiService</string>
     <!--BETA-->
-    <string name="SERVER_BETA_BENH5_VPS">http://benh5api.ktchain.org</string>
-    <string name="SERVER_BETA_BENH5_ALTERNATE_VPS">http://benh5api.ktchain.org</string>
+    <string name="SERVER_BETA_BENH5_VPS">http://192.168.113.149:8080/BenH5ApiService</string>
+    <string name="SERVER_BETA_BENH5_ALTERNATE_VPS">http://192.168.113.149:8080/BenH5ApiService</string>
     <!-- PRD -->
-    <string name="SERVER_PRD_BENH5_VPS">http://benh5api.ktchain.org</string>
-    <string name="SERVER_PRD_BENH5_ALTERNATE_VPS">http://benh5api.ktchain.org</string>
+    <string name="SERVER_PRD_BENH5_VPS">http://192.168.113.149:8080/BenH5ApiService</string>
+    <string name="SERVER_PRD_BENH5_ALTERNATE_VPS">http://192.168.113.149:8080/BenH5ApiService</string>
     <string name="UPDATE_KEY">benh5_android_update</string>
     <string name="ANALYSIS">http://182.254.241.141</string>
 </resources>

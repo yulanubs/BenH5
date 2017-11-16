@@ -83,7 +83,7 @@ public class HttpEntity {
 		}
 		conn.setUseCaches(false);
 		
-		conn.setRequestProperty("Accept", "*/* ");
+		conn.setRequestProperty("Accept", "*");
 		conn.setRequestProperty("Content-Type",
 				"application/x-www-form-urlencoded");
 		conn.setRequestProperty("Charset", "UTF-8");

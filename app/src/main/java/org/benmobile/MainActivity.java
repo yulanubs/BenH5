@@ -148,8 +148,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         final int mRequestCode = 1100;
         String eventAction = "0x10001";
         Map<String, String> data = new HashMap<String, String>();
-        data.put("name", "15773273445");
-        data.put("password", "123456");
+        data.put("appid", mApp.appid);
+        data.put("appkey", mApp.appkey);
+//        data.put("flageType", "2");
+//        data.put("pluginId", "3");
+//        data.put("appProject", "com.ule.demo.zhuxunkang");
 //        mpush.setMsgType(ConstServiceType.INFRASTRUCTURE_SERVICE);
 //        mpush.setServiceType(ConstServiceType.Infrastructure.BENH5_APP_NET_FRAME);
 //        mpush.setEventAction(eventAction);
@@ -165,7 +168,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //            }
 //        });
 
-        AppNetQuestService service = new AppNetQuestService(mApp.configs.SERVER_BENH5_VPS,ConstData.check_updateappplugin,eventAction, data, tag, mRequestCode, new OnAppNetQuestListener() {
+        AppNetQuestService service = new AppNetQuestService(mApp.configs.SERVER_BENH5_VPS,ConstData.IndexFunction,eventAction, data, tag, mRequestCode, new OnAppNetQuestListener() {
             @Override
             public void onMsgSucceed(String pluignId, int requestCode, int resultCode, Protocol msgBean) {
                 {
@@ -231,24 +234,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_meum:
+                SyknetMobileLog.onClick(getBaseContext(),"","","菜单","");
                 Toast.makeText(MainActivity.this, "菜单", Toast.LENGTH_LONG).show();
             break;
             case R.id.iv_msg:
+                SyknetMobileLog.onClick(getBaseContext(),"","","消息","");
                 Toast.makeText(MainActivity.this, "消息", Toast.LENGTH_LONG).show();
             break;
             case R.id.rl_oder_sdk:
+                SyknetMobileLog.onClick(getBaseContext(),"","","第三方SDK","");
                 Toast.makeText(MainActivity.this, "第三方SDK", Toast.LENGTH_LONG).show();
             break;
             case R.id.rl_extent:
+                SyknetMobileLog.onClick(getBaseContext(),"","","扩展功能","");
                 Toast.makeText(MainActivity.this, "扩展功能", Toast.LENGTH_LONG).show();
             break;
             case R.id.rlui_native:
+                SyknetMobileLog.onClick(getBaseContext(),"","","原生UI","");
                 Toast.makeText(MainActivity.this, "原生UI", Toast.LENGTH_LONG).show();
             break;
             case R.id.rl_net:
+                SyknetMobileLog.onClick(getBaseContext(),"","","网络通讯","");
                 Toast.makeText(MainActivity.this, "网络通讯", Toast.LENGTH_LONG).show();
             break;
             case R.id.rl_sys:
+                SyknetMobileLog.onClick(getBaseContext(),"","","系统调用","");
                 Toast.makeText(MainActivity.this, "系统调用", Toast.LENGTH_LONG).show();
             break;
             case R.id.rl_windows:

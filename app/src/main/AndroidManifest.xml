@@ -25,7 +25,21 @@
         <service android:name="org.benmobile.core.natvie.update.service.UpdateService" />
 
         <activity android:name="org.benmobile.core.natvie.core.activity.ActivityStub" />
+        <receiver android:name="org.benmobile.analysis.component.EventReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.syknet.mobilelog.log.GET_TIME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.syknet.mobilelog.log.UPLOAD" />
+            </intent-filter>
+        </receiver>
 
+
+        <service android:name="org.benmobile.analysis.component.TimeService" />
+        <service android:name="org.benmobile.analysis.component.UploadLogService" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
