@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
 
     defaultConfig {
         applicationId "org.benmobile.benh5.rad"
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 

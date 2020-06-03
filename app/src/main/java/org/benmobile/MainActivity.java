@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         // 测试接口见：http://api.nohttp.net
 
-        String url = "http://api.nohttp.net/upload";
+        String url = "http://qimg.ewharain.cn/";
 //        String url = "http://www.ule.com/ulewap/recommond/ylxd/index.html";
         StringRequest request = new StringRequest(url, Method.POST);
         request.addParams("name", "yanzhenjie");

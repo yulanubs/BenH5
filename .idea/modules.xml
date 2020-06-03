@@ -3,10 +3,17 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BenH5.iml" filepath="$PROJECT_DIR$/BenH5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/analysis/BenH5-analysis.iml" filepath="$PROJECT_DIR$/analysis/BenH5-analysis.iml" group="BenH5/analysis" />
+      <module fileurl="file://$PROJECT_DIR$/app/BenH5-app.iml" filepath="$PROJECT_DIR$/app/BenH5-app.iml" group="BenH5/app" />
+      <module fileurl="file://$PROJECT_DIR$/benh5-v2/BenH5-benh5-v2.iml" filepath="$PROJECT_DIR$/benh5-v2/BenH5-benh5-v2.iml" group="BenH5/benh5-v2" />
+      <module fileurl="file://$PROJECT_DIR$/benh5rad/BenH5-benh5rad.iml" filepath="$PROJECT_DIR$/benh5rad/BenH5-benh5rad.iml" group="BenH5/benh5rad" />
+      <module fileurl="file://$PROJECT_DIR$/core/BenH5-core.iml" filepath="$PROJECT_DIR$/core/BenH5-core.iml" group="BenH5/core" />
+      <module fileurl="file://$PROJECT_DIR$/protocol/BenH5-protocol.iml" filepath="$PROJECT_DIR$/protocol/BenH5-protocol.iml" group="BenH5/protocol" />
       <module fileurl="file://$PROJECT_DIR$/analysis/analysis.iml" filepath="$PROJECT_DIR$/analysis/analysis.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/benh5-v2/benh5-v2.iml" filepath="$PROJECT_DIR$/benh5-v2/benh5-v2.iml" />
       <module fileurl="file://$PROJECT_DIR$/benh5rad/benh5rad.iml" filepath="$PROJECT_DIR$/benh5rad/benh5rad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code-BenH5.iml" filepath="$PROJECT_DIR$/code-BenH5.iml" group="BenH5" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/protocol/protocol.iml" filepath="$PROJECT_DIR$/protocol/protocol.iml" />
     </modules>

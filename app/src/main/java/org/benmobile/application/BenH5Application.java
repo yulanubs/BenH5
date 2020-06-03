@@ -81,7 +81,11 @@ public class BenH5Application extends Application {
         //初始化包
         initPackageInfo();
         //初始化设备
-        initDeviceInfo();
+        try {
+            initDeviceInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //AppInfo
         initAPPInfo();
         //事件日志
@@ -124,7 +128,7 @@ public class BenH5Application extends Application {
     /**
      * 初始化设备信息
      */
-    private void initDeviceInfo() {
+    private void initDeviceInfo() throws  Exception{
         {
             dev = new MyDeviceManager();
             dev.init(getApplicationContext());
