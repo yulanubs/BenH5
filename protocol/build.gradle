@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 21
+        minSdkVersion 17
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -27,12 +27,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:21.0.0'
-    testCompile 'junit:junit:4.12'
-    compile 'com.alibaba:fastjson:1.1.52.android'
-    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.5.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.alibaba:fastjson:1.1.52.android'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.5.0'
 }

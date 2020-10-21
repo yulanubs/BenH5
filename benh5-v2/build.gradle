@@ -1,30 +1,4 @@
 apply plugin: 'com.android.application'
-//ext {
-//    bintrayRepo = 'maven'
-//    bintrayName = 'benh5-v2'
-//
-//    publishedGroupId = 'org.benmobile.benh5_v2.library'
-//    libraryName = 'benh5-v2'
-//    artifact = 'benh5-v2'
-//
-//    libraryDescription = 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）.'
-//
-//    siteUrl = 'https://github.com/yulanubs/BenH5'
-//    gitUrl = 'https://github.com/yulanubs/BenH5.git'
-//
-//    libraryVersion = '0.0.8'
-//
-//    developerId = 'yulanubs'
-//    developerName = 'Jekshow'
-//    developerEmail = 'yulanubs123@qq.com'
-//
-//    licenseName = 'The Apache Software License, Version 2.0'
-//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//    allLicenses = ["Apache-2.0"]
-//
-//
-//
-//}
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.0'

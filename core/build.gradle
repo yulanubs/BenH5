@@ -1,34 +1,12 @@
 apply plugin: 'com.android.library'
-//ext {
-//    bintrayRepo = 'maven'
-//    bintrayName = 'benh5-v2'
-//
-//    publishedGroupId = 'org.benmobile.benh5_v2.library'
-//    libraryName = 'core'
-//    artifact = 'core'
-//
-//    libraryDescription = 'BenH5是Syknet开放平台基于BenPlugin安卓组件框架研发，旨在提供Android的HTML5混合开发解决方案,官网（http://benmobile.org）.'
-//
-//    siteUrl = 'https://github.com/yulanubs/BenH5'
-//    gitUrl = 'https://github.com/yulanubs/BenH5.git'
-//
-//    libraryVersion = '0.0.5'
-//
-//    developerId = 'yulanubs'
-//    developerName = 'Jekshow'
-//    developerEmail = 'yulanubs123@qq.com'
-//
-//    licenseName = 'The Apache Software License, Version 2.0'
-//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//    allLicenses = ["Apache-2.0"]
-//}
+
 android {
-    compileSdkVersion 21
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         // dex突破65535的限制
@@ -76,11 +54,11 @@ android {
 }
 tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 //apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 //apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

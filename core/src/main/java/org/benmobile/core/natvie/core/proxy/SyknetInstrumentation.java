@@ -73,18 +73,38 @@ public class SyknetInstrumentation extends InstrumentationProxy {
 	
 	@SuppressLint("NewApi")
 	private void injector(Activity activity, PluginContext contextHook) {
-		
-		Reflection.setField(activity, "mBase", contextHook);
-		Reflection.setField(activity, "mResources", contextHook.plugin.resources);
-		
+
+		try {
+			Reflection.setField(activity, "mBase", contextHook);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			Reflection.setField(activity, "mResources", contextHook.plugin.resources);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		Window window = activity.getWindow();
 		LayoutInflater inflater = LayoutInflater.from(activity);
-		Reflection.setField(window, "mLayoutInflater", inflater);
-		Reflection.setField(window, "mWindowStyle", null);
-		
+		try {
+			Reflection.setField(window, "mLayoutInflater", inflater);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			Reflection.setField(window, "mWindowStyle", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		ActivityInfo ai = contextHook.plugin.findAcitivityInfo(activity.getClass().getName());
 		if (ai != null) {
-			Reflection.setField(activity, "mActivityInfo", ai);
+			try {
+				Reflection.setField(activity, "mActivityInfo", ai);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			if (Build.VERSION.SDK_INT >= 19) {
 				window.setIcon(ai.getIconResource());
 				window.setLogo(ai.getLogoResource());
@@ -95,7 +115,11 @@ public class SyknetInstrumentation extends InstrumentationProxy {
 			
 			int theme = ai.getThemeResource();
 			if (theme != 0) {
-				Reflection.setField(activity, "mTheme", null);
+				try {
+					Reflection.setField(activity, "mTheme", null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				activity.setTheme(theme);
 			}
 		}

@@ -86,12 +86,26 @@ public class SyknetPluginManager {
 
 	public void injectorInstrumentation() {
 		Context contextImpl = ((ContextWrapper) context).getBaseContext();
-		Object activityThread = Reflection.getField(contextImpl, "mMainThread");
-		Object old = Reflection.getField(activityThread, "mInstrumentation");
+		Object activityThread = null;
+		try {
+			activityThread = Reflection.getField(contextImpl, "mMainThread");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Object old = null;
+		try {
+			old = Reflection.getField(activityThread, "mInstrumentation");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (old instanceof SyknetInstrumentation) {
 		} else {
-			Reflection.setField(activityThread, "mInstrumentation",
-					instrumentation);
+			try {
+				Reflection.setField(activityThread, "mInstrumentation",
+						instrumentation);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			instrumentation.old = (Instrumentation) old;
 		}
 	}
@@ -105,9 +119,19 @@ public class SyknetPluginManager {
 		//To get the context
 		Context contextImpl = ((ContextWrapper) context).getBaseContext();
 		//Access to the Activity of the main thread
-		Object activityThread = Reflection.getField(contextImpl, "mMainThread");
+		Object activityThread = null;
+		try {
+			activityThread = Reflection.getField(contextImpl, "mMainThread");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		//Get package container
-		Map mPackages = (Map) Reflection.getField(activityThread, "mPackages");
+		Map mPackages = null;
+		try {
+			mPackages = (Map) Reflection.getField(activityThread, "mPackages");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		//To obtain a weak reference object, the standard reflection
 		WeakReference weakReference = (WeakReference) mPackages.get(pkgName);
 		if (weakReference == null) {
@@ -122,13 +146,22 @@ public class SyknetPluginManager {
 			}
 			if (appClassLoader == null) {
 				//Access to the original class loader
-				ClassLoader old = (ClassLoader) Reflection.getField(loadedApk,
-						"mClassLoader");
+				ClassLoader old = null;
+				try {
+					old = (ClassLoader) Reflection.getField(loadedApk,
+							"mClassLoader");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				//According to the default class loader instantiate a plug-in class loader
 				appClassLoader = new SyknetAppClassLoader(old, this);
 			}
 			//Replace the new plug-in loader loader by default
-			Reflection.setField(loadedApk, "mClassLoader", appClassLoader);
+			try {
+				Reflection.setField(loadedApk, "mClassLoader", appClassLoader);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

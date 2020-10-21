@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
  */
 public class Reflection {
 	
-	private static Method findDeclaredMethod(Class<?> clazz, String name) {
+	private static Method findDeclaredMethod(Class<?> clazz, String name)  throws  Exception{
 		Method[] methods = clazz.getDeclaredMethods();
         Method method = null;
         for (Method m : methods) {
@@ -37,7 +37,7 @@ public class Reflection {
         return method;
 	}
 	
-	private static Method findMethod(Class<?> clazz, String name) {
+	private static Method findMethod(Class<?> clazz, String name)  throws  Exception{
 		Method[] methods = clazz.getMethods();
         Method method = null;
         for (Method m : methods) {
@@ -54,7 +54,7 @@ public class Reflection {
 	}
 	
 	
-	private static Field findField(Class<?> clazz, String name) {
+	private static Field findField(Class<?> clazz, String name)  throws Exception{
 		try {
 			return clazz.getDeclaredField(name);
 		} catch (NoSuchFieldException e) {
@@ -67,7 +67,7 @@ public class Reflection {
 		}
 	}
 	
-	public static Object setField(Object obj, String name, Object value) {
+	public static Object setField(Object obj, String name, Object value)  throws  Exception{
 		try {
 			Field mBase;
 			mBase = findField(obj.getClass(), name);
@@ -83,7 +83,7 @@ public class Reflection {
 		return null;
 	}
 	
-	public static Object getField(Object obj, String name) {
+	public static Object getField(Object obj, String name)  throws  Exception{
 		try {
 			Field mBase;
 			mBase = findField(obj.getClass(), name);
@@ -97,9 +97,14 @@ public class Reflection {
 		return null;
 	}
 	
-	public static Object callMethod(Object obj, String name, Object... arg) {
+	public static Object callMethod(Object obj, String name, Object... arg)  throws  Exception{
         try {
-        	Method method = findMethod(obj.getClass(), name);
+			Method method = null;
+			try {
+				method = findMethod(obj.getClass(), name);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return method.invoke(obj, arg);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
