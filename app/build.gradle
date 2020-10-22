@@ -63,7 +63,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     //    compile 'org.benmobile.benh5_v2.library:benh5-v2:0.0.1'
 //    compile 'org.benmobile.bentools.library:bentools:0.0.7'
-    implementation 'org.benmobile.analysis.library:analysis:0.0.7'
+//    implementation 'org.benmobile.analysis.library:analysis:0.0.8'
+    implementation 'org.benmobile.analysis.library:analysis:0.0.9'
+//    implementation 'org.benmobile.benh5_v2.library:core:0.0.7'
+    implementation 'org.benmobile.benh5_v2.library:benh5-v2:0.1.0'
     implementation project(':core')
     implementation project(':protocol')
 //    compile project(':analysis')
