@@ -31,7 +31,7 @@ import org.benmobile.utils.PingTest;
 
 public class BenH5Application extends Application {
     /**AppId*/
-    public final String   appid="10002";
+    public final String   appid="10003";
     /**日志开关*/
     private boolean debug = true;
     /**测试环境开关,false为Beta环境，true为生产环境*/
@@ -245,13 +245,14 @@ public class BenH5Application extends Application {
     }
     /**初始化PluginConfig*/
     private void initPluginConfigs() {
-        if (BuildConfig.DEBUG) {
+        if (true) {
             Logcat.getInstance(this).start();
             SLogger.setDefaultLevel(SLogger.levelDebug);
             config = new PluginConfig();
-            config.hostUrl = configs.SERVER_BENH5_VPS;
+//            config.hostUrl = configs.SERVER_BENH5_VPS;
+            config.hostUrl = "http://106.75.143.214:5201";
             //是否调用预置的插件
-//            config.copyAsset = true;
+//            config.copyAsset = false;
             config.isDebug = true;
             //0.全部，根据主项目的AppId查询所有插件,1.根据某个插件的id,查询插件信息,2.根据某个插件的appProject，查询插件信息
             config.flageType="2";

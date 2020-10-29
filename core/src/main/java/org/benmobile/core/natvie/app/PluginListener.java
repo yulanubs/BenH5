@@ -90,7 +90,7 @@ public class PluginListener {
 						.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 				progressDialog.setIndeterminate(false);
 				progressDialog.setTitle("Downloading");
-				progressDialog.setMessage("s downloading, please wait!");
+				progressDialog.setMessage(" Downloading, please wait!");
 				progressDialog.setMax(max);
 				progressDialog.show();
 			}

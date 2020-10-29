@@ -6,6 +6,8 @@
 package org.benmobile.core.natvie.update.task;
 
 
+import android.annotation.SuppressLint;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -54,6 +56,7 @@ public class DownloadTask {
 		DownloadTask.flageType = flageType;
 	}
 
+	@SuppressLint("MissingPermission")
 	String getImei() {
 		String imei = null;
 		try {
@@ -99,7 +102,7 @@ public class DownloadTask {
 		if (mPluginVersionInfoList == null||ValueUtils.isListEmpty(mPluginVersionInfoList.mPluginVersionInfoList))
 			return;
 		/**The default according to special code query, plug-in dictionary only return a record, so data to dictionary index of 0*/
-		versionInfo=mPluginVersionInfoList.mPluginVersionInfoList.get(0);
+		versionInfo=mPluginVersionInfoList.mPluginVersionInfoList.get(mPluginVersionInfoList.mPluginVersionInfoList.size()-1);
 		if (ValueUtils.isEmpty(versionInfo)){
 			//If the plug-in with the new data is empty, the end run
 			return;
@@ -193,7 +196,7 @@ public class DownloadTask {
 							versionInfo.version, newPath);
 					onComplete(versionInfo, true, null, false);
 				} else {
-					onComplete(versionInfo, false, "diest error", false);
+					onComplete(versionInfo, false, "diest error :"+digest, false);
 				}
 			} else {
 				onComplete(versionInfo, false, "file size error", false);

@@ -42,7 +42,7 @@ import java.util.Queue;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
         private String pluginid = "cn.benh5.ardx.common.cpst";
-//    private String pluginid = "com.syknet.addressplugin";
+//    private String pluginid = "com.ule.demo.zhuxunkang";
     private RelativeLayout rl_appdemo, rl_ui_wgt, rl_windows,rl_oder_sdk,rl_extent,rl_net,rlui_native,rl_sys;
     private ImageView iv_meum,iv_msg;
     private String tag = PluginConstData.TAG_HOMEPROJECT;

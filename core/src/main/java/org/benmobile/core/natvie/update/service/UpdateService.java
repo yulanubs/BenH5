@@ -148,6 +148,8 @@ public class UpdateService extends Service {
 					if (!old.file.equals(file)) {
 						PluginClient.log.d("delete old file:" + file);
 						old.file.delete();
+						//删除
+						appMap.put(appId, null);
 					}
 				}
 			}
@@ -279,8 +281,8 @@ public class UpdateService extends Service {
 			try {
 				if (PluginClient.config.updateOnlyWifi
 						&& !isWifi(UpdateService.this)) {
-					PluginClient.log.d("not wifi for download");
-					return;
+					PluginClient.log.d("For non WiFi, please pay attention to the usage of traffic !");
+//					return;
 				}
 
 				String appId = null;
