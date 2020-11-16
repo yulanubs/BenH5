@@ -155,7 +155,7 @@ public class DownloadTask {
 
 						if (PluginClient.config.isDebug) {
 							try {
-								Thread.sleep(500);
+								Thread.sleep(10);
 							} catch (InterruptedException e) {
 							}
 						}

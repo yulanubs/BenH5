@@ -13,7 +13,7 @@ import java.util.zip.CRC32;
 
 public class StreamUtil {
 
-	public static int bufferSize = 1024*2;
+	public static int bufferSize = 1024*8;
 
 	/*
 	 *
