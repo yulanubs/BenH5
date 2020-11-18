@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="BenH5.analysis" target="1.8" />
-      <module name="BenH5.app" target="1.8" />
-      <module name="BenH5.benh5-v2" target="1.8" />
-      <module name="BenH5.benh5rad" target="1.8" />
-      <module name="BenH5.core" target="1.8" />
-      <module name="BenH5.protocol" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>

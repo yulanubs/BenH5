@@ -17,7 +17,8 @@ public class ConstData {
    /**宿主项目版本检测*/
     public static  final  String Chcek_Versions="/SykNetApi/App/VersionsChcekApi.do";
     /**插件版本更新接口*/
-    public static final String check_updateappplugin = "/benh5/plugin/CheckUpdateAppPlugin.benh5";
+    public static final String check_updateappplugin = "/app/android/plugin/CheckUpdateappPlugin";
+//    public static final String check_updateappplugin = "/benh5/plugin/CheckUpdateAppPlugin.benh5";
     /**登录接口定义*/
     public static final String LOGIN = "/ComputerDoctor/ComputerDoctor/User/Login.do";
 
